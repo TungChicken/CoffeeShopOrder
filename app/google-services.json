@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "292494405274",
+    "firebase_url": "https://coffeeshoporder-ed93d.firebaseio.com",
+    "project_id": "coffeeshoporder-ed93d",
+    "storage_bucket": "coffeeshoporder-ed93d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292494405274:android:02b996a610d0d473cf7923",
+        "android_client_info": {
+          "package_name": "phuhq.it.coffeeshoporder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292494405274-vhisosqoreefubvslrdu0sec09ajjq2e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "phuhq.it.coffeeshoporder",
+            "certificate_hash": "78498afa26a1c59b90fcfe00372b36a5e524e9bb"
+          }
+        },
+        {
+          "client_id": "292494405274-gopb9thngtub4jlmibq8739bdcki3tag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVzYXEY5euj2fJGZjI58Y2tWbs1P238FU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292494405274-gopb9thngtub4jlmibq8739bdcki3tag.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -15,7 +15,6 @@ import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
     //region AVAILABLE
-    private RecyclerView newProductRecyclerView;
 
     //endregion
     @Override
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     //region ADD CONTROLS AND LOAD
     public void addControls() {
-        newProductRecyclerView = findViewById(R.id.a0_listType);
+
     }
 
     public void mainLoad() {

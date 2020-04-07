@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="20dp"
-            app:layout_constraintGuide_percent="0.8" />
+            app:layout_constraintGuide_percent="0.85" />
 
         <TextView
             android:id="@+id/txtLogin"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Verity OTP"
+            android:text="Enter Your OTP"
             android:textColor="@color/black"
             android:textSize="35sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="8dp"
-            android:text="Enter your OTP code"
+            android:text="Enter OTP Code in 6 digits"
             android:textColor="@color/primaryTextColor"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -87,8 +87,12 @@
             android:layout_marginTop="50dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/g_ed_background"
-            android:padding="20dp"
+            android:inputType="number"
+            android:maxLines="1"
+            android:padding="0dp"
+            android:textAlignment="center"
             android:textColor="@color/primaryTextColor"
+            android:textSize="50sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -102,12 +106,25 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/g_button_background"
-            android:text="CONFIRM"
             android:onClick="OnConfirm"
+            android:text="CONFIRM"
             android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/a2_time_down"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/a2_time_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="00:59"
+            android:textColor="@color/red"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/a1_verity_edOTP" />
 

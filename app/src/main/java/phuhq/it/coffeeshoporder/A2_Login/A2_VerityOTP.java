@@ -6,9 +6,11 @@ import androidx.arch.core.executor.TaskExecutor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,9 +32,11 @@ import phuhq.it.coffeeshoporder.R;
 public class A2_VerityOTP extends AppCompatActivity {
     //region AVAILABLE
     private EditText edCode;
+    private TextView tvTimeDown;
     private String verificationId;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    private int timeDown = 60;
     //endregion
 
     //region FORM EVENTS
@@ -47,14 +51,34 @@ public class A2_VerityOTP extends AppCompatActivity {
     //region ADD CONTROLS AND LOAD
     public void addControls() {
         edCode = findViewById(R.id.a1_verity_edOTP);
+        tvTimeDown = findViewById(R.id.a2_time_down);
     }
 
     public void mainLoad() {
         addControls();
+        countDownTimeShow();
         mAuth = FirebaseAuth.getInstance();
         //progressBar = findViewById(R.id.progressbar);
         String phoneNumber = getIntent().getStringExtra("PHONE");
         sendVerificationCode(phoneNumber);
+    }
+    //endregion
+
+    //region COUNT DOWN
+    public void countDownTimeShow() {
+        new CountDownTimer(60000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeDown -= 1;
+                String timeCount = "00:" + timeDown;
+                tvTimeDown.setText(timeCount);
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
     }
     //endregion
 
@@ -86,7 +110,6 @@ public class A2_VerityOTP extends AppCompatActivity {
                 //verifying the code
                 verifyVerificationCode(code);
             }
-
         }
 
         @Override
@@ -100,7 +123,6 @@ public class A2_VerityOTP extends AppCompatActivity {
             verificationId = s;
         }
     };
-
     //endregion
 
     //region VERIFY

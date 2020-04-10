@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -37,6 +38,7 @@ public class A2_VerityOTP extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
     private int timeDown = 60;
+    private Button btnConfirm;
     //endregion
 
     //region FORM EVENTS
@@ -52,6 +54,7 @@ public class A2_VerityOTP extends AppCompatActivity {
     public void addControls() {
         edCode = findViewById(R.id.a1_verity_edOTP);
         tvTimeDown = findViewById(R.id.a2_time_down);
+        btnConfirm = findViewById(R.id.a1_verity_btnConfirm);
     }
 
     public void mainLoad() {
@@ -107,6 +110,8 @@ public class A2_VerityOTP extends AppCompatActivity {
             //so user has to manually enter the code
             if (code != null) {
                 edCode.setText(code);
+                //disable click button confirm
+                btnConfirm.setClickable(false);
                 //verifying the code
                 verifyVerificationCode(code);
             }

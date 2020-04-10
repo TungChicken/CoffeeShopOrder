@@ -58,45 +58,45 @@ public class A3_OrderDetails extends AppCompatActivity {
             d3.setPrice(1.8);
             d3.setImage(R.drawable.c3);
 
-            A3_Drink d4 = new A3_Drink();
-            d4.setDrinkName("Coffee");
-            d4.setPrice(2.0);
-            d4.setImage(R.drawable.c1);
-
-            A3_Drink d5 = new A3_Drink();
-            d5.setDrinkName("Juice");
-            d5.setPrice(1.6);
-            d5.setImage(R.drawable.c2);
-
-            A3_Drink d6 = new A3_Drink();
-            d6.setDrinkName("Orange Smoothie");
-            d6.setPrice(2.5);
-            d6.setImage(R.drawable.c3);
-
-            A3_Drink d7 = new A3_Drink();
-            d7.setDrinkName("Coffee");
-            d7.setPrice(3.1);
-            d7.setImage(R.drawable.c1);
-
-            A3_Drink d8 = new A3_Drink();
-            d8.setDrinkName("Juice");
-            d8.setPrice(5.4);
-            d8.setImage(R.drawable.c2);
-
-            A3_Drink d9 = new A3_Drink();
-            d9.setDrinkName("Orange Smoothie");
-            d9.setPrice(6.0);
-            d9.setImage(R.drawable.c3);
+//            A3_Drink d4 = new A3_Drink();
+//            d4.setDrinkName("Coffee");
+//            d4.setPrice(2.0);
+//            d4.setImage(R.drawable.c1);
+//
+//            A3_Drink d5 = new A3_Drink();
+//            d5.setDrinkName("Juice");
+//            d5.setPrice(1.6);
+//            d5.setImage(R.drawable.c2);
+//
+//            A3_Drink d6 = new A3_Drink();
+//            d6.setDrinkName("Orange Smoothie");
+//            d6.setPrice(2.5);
+//            d6.setImage(R.drawable.c3);
+//
+//            A3_Drink d7 = new A3_Drink();
+//            d7.setDrinkName("Coffee");
+//            d7.setPrice(3.1);
+//            d7.setImage(R.drawable.c1);
+//
+//            A3_Drink d8 = new A3_Drink();
+//            d8.setDrinkName("Juice");
+//            d8.setPrice(5.4);
+//            d8.setImage(R.drawable.c2);
+//
+//            A3_Drink d9 = new A3_Drink();
+//            d9.setDrinkName("Orange Smoothie");
+//            d9.setPrice(6.0);
+//            d9.setImage(R.drawable.c3);
 
             drinkList.add(d1);
             drinkList.add(d2);
             drinkList.add(d3);
-            drinkList.add(d4);
-            drinkList.add(d5);
-            drinkList.add(d6);
-            drinkList.add(d7);
-            drinkList.add(d8);
-            drinkList.add(d9);
+//            drinkList.add(d4);
+//            drinkList.add(d5);
+//            drinkList.add(d6);
+//            drinkList.add(d7);
+//            drinkList.add(d8);
+//            drinkList.add(d9);
             // Khởi tạo apdater
             A3_OrderDetailsAdapter detailsAdapter = new A3_OrderDetailsAdapter(this, R.layout.a3_order_details_item, drinkList);
 

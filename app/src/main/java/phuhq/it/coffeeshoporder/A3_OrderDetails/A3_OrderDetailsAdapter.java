@@ -75,7 +75,8 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
             }
             // Hiển thị thông tin
             viewHolders.tvTitle.setText(String.valueOf(drinkList.get(position).getDrinkName()));
-            viewHolders.tvPrice.setText(drinkList.get(position).getPrice());
+            String showPrice = "$ " + drinkList.get(position).getPrice();
+            viewHolders.tvPrice.setText(showPrice);
             viewHolders.imgDrink.setImageResource(drinkList.get(position).getImage());
             // Sự kiện click
             final ViewHolders finalViewHolders = viewHolders;
@@ -88,6 +89,7 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
                         finalViewHolders.btnReduction.setClickable(false);
                     } else {
                         orderNum += 1;
+                        drinkList.get(position).setQty(orderNum);
                         finalViewHolders.tvTotal.setText(String.valueOf(orderNum));
                         finalViewHolders.btnIncrease.setClickable(true);
                     }
@@ -103,6 +105,7 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
                     } else {
                         orderNum -= 1;
                         finalViewHolders.tvTotal.setText(String.valueOf(orderNum));
+                        drinkList.get(position).setQty(orderNum);
                         finalViewHolders.btnReduction.setClickable(true);
                     }
                 }

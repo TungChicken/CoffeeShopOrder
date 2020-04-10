@@ -1,6 +1,7 @@
 package phuhq.it.coffeeshoporder.A3_OrderDetails;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,6 +92,7 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
                         orderNum += 1;
                         drinkList.get(position).setQty(orderNum);
                         finalViewHolders.tvTotal.setText(String.valueOf(orderNum));
+                        finalViewHolders.tvTotal.setTextColor(context.getResources().getColor(R.color.primaryTextColor));
                         finalViewHolders.btnIncrease.setClickable(true);
                     }
                 }
@@ -104,6 +106,9 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
                         finalViewHolders.btnIncrease.setClickable(false);
                     } else {
                         orderNum -= 1;
+                        if (orderNum ==0){
+                            finalViewHolders.tvTotal.setTextColor(context.getResources().getColor(R.color.black));
+                        }
                         finalViewHolders.tvTotal.setText(String.valueOf(orderNum));
                         drinkList.get(position).setQty(orderNum);
                         finalViewHolders.btnReduction.setClickable(true);

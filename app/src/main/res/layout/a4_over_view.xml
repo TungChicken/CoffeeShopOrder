@@ -148,6 +148,7 @@
         android:layout_marginBottom="4dp"
         android:background="@drawable/bg_radius_green"
         android:elevation="3dp"
+        android:onClick="OrderNow"
         android:padding="5dp"
         android:text="Order Now"
         android:textColor="@color/white"

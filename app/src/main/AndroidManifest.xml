@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".A4_OrderOverView.A4_OverView"></activity>
+        <activity android:name=".A4_OrderOverView.A4_OrderComplete"></activity>
+        <activity android:name=".A4_OrderOverView.A4_OverView" />
         <activity android:name=".A3_OrderDetails.A3_OrderDetails">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".A1_Intro.A1_Intro">
-
-        </activity>
+        <activity android:name=".A1_Intro.A1_Intro"></activity>
         <activity android:name=".A2_Login.A2_VerityOTP" />
         <activity
             android:name=".A2_Login.A2_Login"

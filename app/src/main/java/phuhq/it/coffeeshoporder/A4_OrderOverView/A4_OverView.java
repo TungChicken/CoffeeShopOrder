@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -70,6 +71,17 @@ public class A4_OverView extends AppCompatActivity {
                 orderTotal += drinkListOrder.get(i).getQty() * drinkListOrder.get(i).getPrice();
             }
             tvOrderTotal.setText(String.valueOf(orderTotal));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //endregion
+
+    //region ON TOUCH
+    public void OrderNow(View view) {
+        try {
+            Intent intent = new Intent(A4_OverView.this, A4_OrderComplete.class);
+            startActivity(intent);
         } catch (Exception e) {
             e.printStackTrace();
         }

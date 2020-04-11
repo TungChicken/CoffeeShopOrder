@@ -11,13 +11,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_Drink;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_Drinks;
 import phuhq.it.coffeeshoporder.R;
 
 public class A4_OverView extends AppCompatActivity {
     //region  AVAILABLE
     private ListView lvDrink;
-    private List<A3_Drink> drinkListOrder;
+    private List<A3_Drinks> drinkListOrder;
     private TextView tvOrderTotal;
     //endregion
 
@@ -35,16 +35,16 @@ public class A4_OverView extends AppCompatActivity {
         try {
             lvDrink = findViewById(R.id.a4_listView);
             tvOrderTotal = findViewById(R.id.a4_tv_OrderTotal);
-            Intent intent = getIntent();
-            ArrayList<A3_Drink> drinkList = (ArrayList<A3_Drink>) intent.getSerializableExtra("ORDER");
-            drinkListOrder = new ArrayList<>();
-
-            assert drinkList != null;
-            for (int i = 0; i < drinkList.size(); i++) {
-                if (drinkList.get(i).getQty() > 0) {
-                    drinkListOrder.add(drinkList.get(i));
-                }
-            }
+//            Intent intent = getIntent();
+//            ArrayList<A3_Drinks> drinkList = (ArrayList<A3_Drinks>) intent.getSerializableExtra("ORDER");
+//            drinkListOrder = new ArrayList<>();
+//
+//            assert drinkList != null;
+//            for (int i = 0; i < drinkList.size(); i++) {
+//                if (drinkList.get(i).getNowQty() > 0) {
+//                    drinkListOrder.add(drinkList.get(i));
+//                }
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -68,7 +68,7 @@ public class A4_OverView extends AppCompatActivity {
             // Tính tổng order
             double orderTotal = 0;
             for (int i = 0; i < drinkListOrder.size(); i++) {
-                orderTotal += drinkListOrder.get(i).getQty() * drinkListOrder.get(i).getPrice();
+                orderTotal += drinkListOrder.get(i).getNowQty() * drinkListOrder.get(i).getPrice();
             }
             tvOrderTotal.setText(String.valueOf(orderTotal));
         } catch (Exception e) {

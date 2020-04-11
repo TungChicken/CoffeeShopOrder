@@ -2,6 +2,8 @@ package phuhq.it.coffeeshoporder.A3_OrderDetails;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
+
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 import phuhq.it.coffeeshoporder.R;
@@ -16,9 +26,9 @@ import phuhq.it.coffeeshoporder.R;
 public class A3_OrderDetailsAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<A3_Drink> drinkList;
+    private List<A3_Drinks> drinkList;
 
-    public A3_OrderDetailsAdapter(Context context, int layout, List<A3_Drink> drinkList) {
+    public A3_OrderDetailsAdapter(Context context, int layout, List<A3_Drinks> drinkList) {
         this.context = context;
         this.layout = layout;
         this.drinkList = drinkList;
@@ -46,7 +56,6 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
-
         try {
             A3_OrderDetailsAdapter.ViewHolders viewHolders = null;
             if (view == null) {
@@ -78,9 +87,16 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
             viewHolders.tvTitle.setText(String.valueOf(drinkList.get(position).getDrinkName()));
             String showPrice = "$ " + drinkList.get(position).getPrice();
             viewHolders.tvPrice.setText(showPrice);
-            viewHolders.imgDrink.setImageResource(drinkList.get(position).getImage());
+            viewHolders.tvTotal.setText(String.valueOf(drinkList.get(position).getNowQty()));
+            if (drinkList.get(position).getNowQty() > 0)
+                viewHolders.tvTotal.setTextColor(context.getResources().getColor(R.color.primaryTextColor));
+            Picasso.with(context).load(drinkList.get(position).getImage())
+                    .placeholder(R.drawable.c1)
+                    .error(R.drawable.c1).into(viewHolders.imgDrink);
+
             // Sự kiện click
             final ViewHolders finalViewHolders = viewHolders;
+            // Button tăng
             viewHolders.btnReduction.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -90,13 +106,17 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
                         finalViewHolders.btnReduction.setClickable(false);
                     } else {
                         orderNum += 1;
-                        drinkList.get(position).setQty(orderNum);
+                        drinkList.get(position).setNowQty(orderNum);
                         finalViewHolders.tvTotal.setText(String.valueOf(orderNum));
                         finalViewHolders.tvTotal.setTextColor(context.getResources().getColor(R.color.primaryTextColor));
                         finalViewHolders.btnIncrease.setClickable(true);
+
+                        // Thay đổi ở Firebase
+                        onChangeOrderNumber(drinkList.get(position));
                     }
                 }
             });
+            // Button giảm
             viewHolders.btnIncrease.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -106,12 +126,15 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
                         finalViewHolders.btnIncrease.setClickable(false);
                     } else {
                         orderNum -= 1;
-                        if (orderNum ==0){
+                        if (orderNum == 0) {
                             finalViewHolders.tvTotal.setTextColor(context.getResources().getColor(R.color.black));
                         }
                         finalViewHolders.tvTotal.setText(String.valueOf(orderNum));
-                        drinkList.get(position).setQty(orderNum);
+                        drinkList.get(position).setNowQty(orderNum);
                         finalViewHolders.btnReduction.setClickable(true);
+
+                        // Thay đổi ở Firebase
+                        onChangeOrderNumber(drinkList.get(position));
                     }
                 }
             });
@@ -120,6 +143,16 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    private void onChangeOrderNumber(A3_Drinks drinks) {
+        try {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("CSO").child("Drink");
+            myRef.child(drinks.getDrinkID()).child("NowQty").setValue(drinks.getNowQty());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

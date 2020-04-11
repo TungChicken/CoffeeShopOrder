@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".A1_Intro.A1_Intro"></activity>
+        <activity android:name=".A1_Intro.A1_Intro">
+
+        </activity>
         <activity android:name=".A2_Login.A2_VerityOTP" />
         <activity
             android:name=".A2_Login.A2_Login"

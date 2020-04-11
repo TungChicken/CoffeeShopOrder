@@ -1,6 +1,8 @@
 package phuhq.it.coffeeshoporder.A4_OrderOverView;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,17 +10,21 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
-import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_Drink;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_Drinks;
 import phuhq.it.coffeeshoporder.R;
 
 public class A4_OverViewAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<A3_Drink> drinkList;
+    private List<A3_Drinks> drinkList;
 
-    public A4_OverViewAdapter(Context context, int layout, List<A3_Drink> drinkList) {
+    public A4_OverViewAdapter(Context context, int layout, List<A3_Drinks> drinkList) {
         this.context = context;
         this.layout = layout;
         this.drinkList = drinkList;
@@ -72,9 +78,11 @@ public class A4_OverViewAdapter extends BaseAdapter {
             }
             // Hiển thị thông tin
             viewHolders.tvTitle.setText(String.valueOf(drinkList.get(position).getDrinkName()));
-            viewHolders.tvQty.setText(String.valueOf(drinkList.get(position).getQty()));
-            viewHolders.imgDrink.setImageResource(drinkList.get(position).getImage());
-            double totalPrice = drinkList.get(position).getPrice() * drinkList.get(position).getQty();
+            viewHolders.tvQty.setText(String.valueOf(drinkList.get(position).getNowQty()));
+            Picasso.with(context).load(drinkList.get(position).getImage())
+                    .placeholder(R.drawable.c1)
+                    .error(R.drawable.c1).into(viewHolders.imgDrink);
+            double totalPrice = drinkList.get(position).getPrice() * drinkList.get(position).getNowQty();
             viewHolders.tvTotalPrice.setText(String.valueOf(totalPrice));
 
             return view;

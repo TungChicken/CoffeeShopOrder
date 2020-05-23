@@ -1,4 +1,4 @@
-package phuhq.it.coffeeshoporder.A2_Login;
+package phuhq.it.coffeeshoporder.A2_Login.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;

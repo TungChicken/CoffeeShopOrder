@@ -189,7 +189,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:scaleType="centerInside"
-                android:src="@drawable/c1" />
+                android:src="@drawable/a0_order" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -197,7 +197,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:text="Coffee"
+            android:text="Order"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline13"
@@ -214,6 +214,7 @@
             android:layout_marginBottom="8dp"
             android:elevation="12dp"
             android:innerRadius="10dp"
+
             android:shape="ring"
             android:thicknessRatio="1.9"
             app:cardCornerRadius="10dp"
@@ -229,14 +230,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:scaleType="centerInside"
-                android:src="@drawable/c2" />
+                android:src="@drawable/a0_invoice" />
         </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Juice"
+            android:text="Invoice"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline14"
@@ -253,6 +254,7 @@
             android:layout_marginBottom="8dp"
             android:elevation="12dp"
             android:innerRadius="10dp"
+            android:onClick="onUserAccount"
             android:shape="ring"
             android:thicknessRatio="1.9"
             app:cardCornerRadius="10dp"
@@ -268,7 +270,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:scaleType="centerInside"
-                android:src="@drawable/c3" />
+                android:src="@drawable/a0_user" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -276,7 +278,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
-            android:text="Smoothie"
+            android:text="My user"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
             app:layout_constraintEnd_toEndOf="parent"

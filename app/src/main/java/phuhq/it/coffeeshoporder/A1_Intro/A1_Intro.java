@@ -3,12 +3,11 @@ package phuhq.it.coffeeshoporder.A1_Intro;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 
-import phuhq.it.coffeeshoporder.A2_Login.A2_Login;
+import phuhq.it.coffeeshoporder.A2_Login.View.A2_Login_Pass;
 import phuhq.it.coffeeshoporder.R;
 
 public class A1_Intro extends AppCompatActivity {
@@ -23,6 +22,7 @@ public class A1_Intro extends AppCompatActivity {
         view.setSystemUiVisibility(uiOptions);
         // time count down
         countDownTimeShow();
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
     }
 
     //region COUNT DOWN
@@ -34,7 +34,7 @@ public class A1_Intro extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                Intent intent = new Intent(A1_Intro.this, A2_Login.class);
+                Intent intent = new Intent(A1_Intro.this, A2_Login_Pass.class);
                 startActivity(intent);
                 finish();
             }

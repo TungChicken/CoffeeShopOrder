@@ -9,13 +9,16 @@ import android.view.View;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import phuhq.it.coffeeshoporder.A2_Login.Model.A2_Cls_User;
 import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_OrderDetails;
 import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_OrderDialog;
 import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_OrderDialogMore;
+import phuhq.it.coffeeshoporder.A6_UserInfo.View.A6_UserInfo;
 import phuhq.it.coffeeshoporder.R;
 
 public class MainActivity extends AppCompatActivity {
     //region AVAILABLE
+    public A2_Cls_User clsUser;
     //endregion
 
     //region FROM EVENT
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void mainLoad() {
         addControls();
+        clsUser = (A2_Cls_User) getIntent().getSerializableExtra("USER");
     }
     //endregion
 
@@ -48,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
     public void onOrderDetails(View view) {
         Intent orderDetails = new Intent(MainActivity.this, A3_OrderDetails.class);
         startActivity(orderDetails);
+    }
+
+    public void onUserAccount(View view) {
+        Intent intent = new Intent(MainActivity.this, A6_UserInfo.class);
+        intent.putExtra("USER", clsUser);
+        startActivity(intent);
     }
     //endregion
 

@@ -67,7 +67,7 @@ public class A2_Login_Pass extends AppCompatActivity {
 
             // Check vaild user registered
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
-            final DatabaseReference users = database.getReference("CSO").child("Users").child(userName);
+            final DatabaseReference users = database.getReference("CSO").child("TBM_Users").child(userName);
             users.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

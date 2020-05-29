@@ -72,7 +72,7 @@ public class A5_ChangePassword extends AppCompatActivity {
 
             // Check vaild user registered
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
-            final DatabaseReference users = database.getReference("CSO").child("Users").child(G_Common.userLogin);
+            final DatabaseReference users = database.getReference("CSO").child("TBM_Users").child(G_Common.userLogin);
             users.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -82,7 +82,7 @@ public class A5_ChangePassword extends AppCompatActivity {
                             clsUser = dataSnapshot.getValue(A2_Cls_User.class);
                             assert clsUser != null;
                             if (clsUser.getPassWord().equals(oldPass)) {
-                                DatabaseReference changePassword = database.getReference("CSO").child("Users");
+                                DatabaseReference changePassword = database.getReference("CSO").child("TBM_Users");
                                 changePassword.child(G_Common.userLogin).child("passWord").setValue(newPass);
                                 Toast.makeText(A5_ChangePassword.this, "Change password successful!", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);

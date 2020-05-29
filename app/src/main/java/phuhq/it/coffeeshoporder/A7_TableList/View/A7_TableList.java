@@ -61,7 +61,7 @@ public class A7_TableList extends AppCompatActivity {
     public void getDataTableList() {
         try {
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
-            final DatabaseReference tables = database.getReference("CSO").child("Tables");
+            final DatabaseReference tables = database.getReference("CSO").child("TBM_Tables");
             tables.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

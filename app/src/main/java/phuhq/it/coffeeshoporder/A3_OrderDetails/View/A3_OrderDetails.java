@@ -55,7 +55,7 @@ public class A3_OrderDetails extends AppCompatActivity {
         try {
             // Get list from Firebase
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
-            final DatabaseReference drinks = database.getReference("CSO").child("Drink");
+            final DatabaseReference drinks = database.getReference("CSO").child("TBM_Drink");
             drinks.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -99,7 +99,7 @@ public class A3_OrderDetails extends AppCompatActivity {
         try {
             // Get list from Firebase
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
-            final DatabaseReference drinks = database.getReference("CSO").child("Banner").child("OrderDetails");
+            final DatabaseReference drinks = database.getReference("CSO").child("TBM_Banner").child("OrderDetails");
             drinks.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

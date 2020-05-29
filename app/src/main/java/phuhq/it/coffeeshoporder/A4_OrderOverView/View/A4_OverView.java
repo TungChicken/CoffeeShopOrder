@@ -1,4 +1,4 @@
-package phuhq.it.coffeeshoporder.A4_OrderOverView;
+package phuhq.it.coffeeshoporder.A4_OrderOverView.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Drinks;
+import phuhq.it.coffeeshoporder.A4_OrderOverView.Presenter.A4_OverViewAdapter;
 import phuhq.it.coffeeshoporder.R;
 
 public class A4_OverView extends AppCompatActivity {

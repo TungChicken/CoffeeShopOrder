@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".A4_OrderOverView.A4_OverView">
+    tools:context=".A4_OrderOverView.View.A4_OverView">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"

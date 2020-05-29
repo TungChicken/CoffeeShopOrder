@@ -59,7 +59,7 @@ public class A2_Login_Pass extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 return;
             } else if (Strings.isEmptyOrWhitespace(passWord)) {
-                edPass.setError(("Please enter your pasword"));
+                edPass.setError(("Please enter your password"));
                 edPass.requestFocus();
                 progressBar.setVisibility(View.GONE);
                 return;

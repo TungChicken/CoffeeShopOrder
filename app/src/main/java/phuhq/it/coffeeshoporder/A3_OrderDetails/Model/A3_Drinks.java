@@ -3,7 +3,7 @@ package phuhq.it.coffeeshoporder.A3_OrderDetails.Model;
 public class A3_Drinks {
     private String DrinkName, Image, DrinkID;
     private int NowQty;
-    private double Price;
+    private int Price;
 
 
     public String getDrinkName() {
@@ -30,11 +30,11 @@ public class A3_Drinks {
         NowQty = nowQty;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return Price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         Price = price;
     }
 

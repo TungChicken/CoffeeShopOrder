@@ -25,8 +25,8 @@
         <!-- <action android:name="android.intent.action.QUIKBOOT_POWERON"/> -->
         <!-- </intent-filter> -->
         <!-- </receiver> -->
-        <activity android:name=".A4_OrderOverView.A4_OrderComplete" />
-        <activity android:name=".A4_OrderOverView.A4_OverView" />
+        <activity android:name=".A4_OrderOverView.View.A4_OrderComplete" />
+        <activity android:name=".A4_OrderOverView.View.A4_OverView" />
         <activity android:name=".A3_OrderDetails.View.A3_OrderDetails" />
         <activity android:name=".A1_Intro.View.A1_Intro">
             <intent-filter>

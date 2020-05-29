@@ -17,6 +17,8 @@ import java.util.List;
 import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Drinks;
 import phuhq.it.coffeeshoporder.R;
 
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.getDecimalFormattedString;
+
 public class A3_OrderDetailsAdapter extends BaseAdapter {
     private Context context;
     private int layout;
@@ -79,7 +81,7 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
             }
             // Hiển thị thông tin
             viewHolders.tvTitle.setText(String.valueOf(drinkList.get(position).getDrinkName()));
-            String showPrice = "$ " + drinkList.get(position).getPrice();
+            String showPrice = getDecimalFormattedString(String.valueOf(drinkList.get(position).getPrice())) + " vnđ";
             viewHolders.tvPrice.setText(showPrice);
             viewHolders.tvTotal.setText(String.valueOf(drinkList.get(position).getNowQty()));
             if (drinkList.get(position).getNowQty() > 0)
@@ -143,7 +145,7 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
     private void onChangeOrderNumber(A3_Drinks drinks) {
         try {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("CSO").child("Drink");
+            DatabaseReference myRef = database.getReference("CSO").child("TBM_Drink");
             myRef.child(drinks.getDrinkID()).child("NowQty").setValue(drinks.getNowQty());
         } catch (Exception e) {
             e.printStackTrace();

@@ -21,7 +21,7 @@ import java.util.List;
 
 import phuhq.it.coffeeshoporder.A3_OrderDetails.Presenter.A3_OrderDetailsAdapter;
 import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Drinks;
-import phuhq.it.coffeeshoporder.A4_OrderOverView.A4_OverView;
+import phuhq.it.coffeeshoporder.A4_OrderOverView.View.A4_OverView;
 import phuhq.it.coffeeshoporder.R;
 
 public class A3_OrderDetails extends AppCompatActivity {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".A4_OrderOverView.A4_OrderComplete">
+    tools:context=".A4_OrderOverView.View.A4_OrderComplete">
 
     <ImageView
         android:id="@+id/imageView4"

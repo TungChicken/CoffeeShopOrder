@@ -443,6 +443,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/a2_tvLogout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:drawableStart="@drawable/a6_ic_logout"
+            android:drawablePadding="10dp"
+            android:text="Logout"
+            android:onClick="onLogout"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/a2_tvUpdate" />
+
         <View
             android:id="@+id/view9"
             android:layout_width="0dp"
@@ -455,7 +471,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/a2_tvLogout"
+        android:id="@+id/a2_tvLogouts"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -463,6 +479,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
         android:onClick="onLogout"
+        android:visibility="gone"
         android:text="Logout"
         android:textAlignment="center"
         android:textColor="@color/red"

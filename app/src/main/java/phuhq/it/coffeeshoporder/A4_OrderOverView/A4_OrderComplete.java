@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import phuhq.it.coffeeshoporder.A0_Main.MainActivity;
+import phuhq.it.coffeeshoporder.A0_Main.View.MainActivity;
 import phuhq.it.coffeeshoporder.R;
 
 public class A4_OrderComplete extends AppCompatActivity {

@@ -1,8 +1,6 @@
 package phuhq.it.coffeeshoporder.A4_OrderOverView;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +10,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.List;
 
-import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_Drinks;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Drinks;
 import phuhq.it.coffeeshoporder.R;
 
 public class A4_OverViewAdapter extends BaseAdapter {

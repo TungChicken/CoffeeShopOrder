@@ -25,7 +25,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-import phuhq.it.coffeeshoporder.A0_Main.MainActivity;
+import phuhq.it.coffeeshoporder.A0_Main.View.MainActivity;
 import phuhq.it.coffeeshoporder.R;
 
 public class A2_VerityOTP extends AppCompatActivity {

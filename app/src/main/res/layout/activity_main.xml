@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".A0_Main.MainActivity">
+    tools:context=".A0_Main.View.MainActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -173,7 +173,7 @@
             android:layout_marginBottom="8dp"
             android:elevation="12dp"
             android:innerRadius="10dp"
-            android:onClick="onOrderDetails"
+            android:onClick="onOrder"
             android:shape="ring"
             android:thicknessRatio="1.9"
             app:cardCornerRadius="10dp"
@@ -214,7 +214,7 @@
             android:layout_marginBottom="8dp"
             android:elevation="12dp"
             android:innerRadius="10dp"
-
+            android:onClick="onInvoice"
             android:shape="ring"
             android:thicknessRatio="1.9"
             app:cardCornerRadius="10dp"

@@ -1,21 +1,14 @@
-package phuhq.it.coffeeshoporder.A3_OrderDetails;
+package phuhq.it.coffeeshoporder.A3_OrderDetails.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +19,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import phuhq.it.coffeeshoporder.A3_OrderDetails.Presenter.A3_OrderDetailsAdapter;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Drinks;
 import phuhq.it.coffeeshoporder.A4_OrderOverView.A4_OverView;
 import phuhq.it.coffeeshoporder.R;
 

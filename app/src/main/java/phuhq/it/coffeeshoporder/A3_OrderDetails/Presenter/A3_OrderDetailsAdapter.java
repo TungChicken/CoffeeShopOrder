@@ -1,9 +1,6 @@
-package phuhq.it.coffeeshoporder.A3_OrderDetails;
+package phuhq.it.coffeeshoporder.A3_OrderDetails.Presenter;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +8,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.List;
 
+import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Drinks;
 import phuhq.it.coffeeshoporder.R;
 
 public class A3_OrderDetailsAdapter extends BaseAdapter {

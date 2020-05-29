@@ -1,4 +1,4 @@
-package phuhq.it.coffeeshoporder.A3_OrderDetails;
+package phuhq.it.coffeeshoporder.A3_OrderDetails.Model;
 
 public class A3_Drinks {
     private String DrinkName, Image, DrinkID;

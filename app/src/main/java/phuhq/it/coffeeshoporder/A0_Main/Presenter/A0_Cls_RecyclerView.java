@@ -1,4 +1,4 @@
-package phuhq.it.coffeeshoporder.A0_Main;
+package phuhq.it.coffeeshoporder.A0_Main.Presenter;
 
 public class A0_Cls_RecyclerView {
     private String title;

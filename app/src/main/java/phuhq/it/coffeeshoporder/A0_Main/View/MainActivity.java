@@ -1,20 +1,20 @@
-package phuhq.it.coffeeshoporder.A0_Main;
+package phuhq.it.coffeeshoporder.A0_Main.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-
 import phuhq.it.coffeeshoporder.A2_Login.Model.A2_Cls_User;
-import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_OrderDetails;
-import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_OrderDialog;
-import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_OrderDialogMore;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.View.A3_OrderDetails;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.View.A3_OrderDialog;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.View.A3_OrderDialogMore;
 import phuhq.it.coffeeshoporder.A6_UserInfo.View.A6_UserInfo;
+import phuhq.it.coffeeshoporder.A7_TableList.View.A7_TableList;
 import phuhq.it.coffeeshoporder.R;
+
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.flagTableList;
 
 public class MainActivity extends AppCompatActivity {
     //region AVAILABLE
@@ -49,9 +49,16 @@ public class MainActivity extends AppCompatActivity {
         showDialogOrder(2);
     }
 
-    public void onOrderDetails(View view) {
-        Intent orderDetails = new Intent(MainActivity.this, A3_OrderDetails.class);
-        startActivity(orderDetails);
+    public void onOrder(View view) {
+        flagTableList = false; // order, pending
+        Intent intent = new Intent(MainActivity.this, A7_TableList.class);
+        startActivity(intent);
+    }
+
+    public void onInvoice(View view) {
+        flagTableList = true; // invoice
+        Intent intent = new Intent(MainActivity.this, A7_TableList.class);
+        startActivity(intent);
     }
 
     public void onUserAccount(View view) {

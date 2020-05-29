@@ -17,7 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import phuhq.it.coffeeshoporder.A0_Main.MainActivity;
+import phuhq.it.coffeeshoporder.A0_Main.View.MainActivity;
 import phuhq.it.coffeeshoporder.A2_Login.Model.A2_Cls_User;
 import phuhq.it.coffeeshoporder.G_Common.G_Common;
 import phuhq.it.coffeeshoporder.R;

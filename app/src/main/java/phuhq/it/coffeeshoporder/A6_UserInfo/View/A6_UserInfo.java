@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import phuhq.it.coffeeshoporder.A0_Main.MainActivity;
 import phuhq.it.coffeeshoporder.A2_Login.Model.A2_Cls_User;
 import phuhq.it.coffeeshoporder.A2_Login.View.A2_Login_Pass;
 import phuhq.it.coffeeshoporder.A5_ChangePassword.View.A5_ChangePassword;

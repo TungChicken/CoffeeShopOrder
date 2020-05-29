@@ -8,10 +8,9 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import phuhq.it.coffeeshoporder.A3_OrderDetails.A3_Drinks;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Drinks;
 import phuhq.it.coffeeshoporder.R;
 
 public class A4_OverView extends AppCompatActivity {

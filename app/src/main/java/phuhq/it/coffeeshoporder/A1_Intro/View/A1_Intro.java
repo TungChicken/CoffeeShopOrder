@@ -1,4 +1,4 @@
-package phuhq.it.coffeeshoporder.A1_Intro;
+package phuhq.it.coffeeshoporder.A1_Intro.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 

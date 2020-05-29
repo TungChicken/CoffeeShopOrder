@@ -1,4 +1,4 @@
-package phuhq.it.coffeeshoporder.A3_OrderDetails;
+package phuhq.it.coffeeshoporder.A3_OrderDetails.View;
 
 import android.os.Bundle;
 

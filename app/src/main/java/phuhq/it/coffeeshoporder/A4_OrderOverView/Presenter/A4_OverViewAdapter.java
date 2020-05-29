@@ -12,15 +12,17 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Drinks;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Cls_Drinks;
 import phuhq.it.coffeeshoporder.R;
+
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.getDecimalFormattedString;
 
 public class A4_OverViewAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<A3_Drinks> drinkList;
+    private List<A3_Cls_Drinks> drinkList;
 
-    public A4_OverViewAdapter(Context context, int layout, List<A3_Drinks> drinkList) {
+    public A4_OverViewAdapter(Context context, int layout, List<A3_Cls_Drinks> drinkList) {
         this.context = context;
         this.layout = layout;
         this.drinkList = drinkList;
@@ -78,8 +80,8 @@ public class A4_OverViewAdapter extends BaseAdapter {
             Picasso.with(context).load(drinkList.get(position).getImage())
                     .placeholder(R.drawable.c1)
                     .error(R.drawable.c1).into(viewHolders.imgDrink);
-            double totalPrice = drinkList.get(position).getPrice() * drinkList.get(position).getNowQty();
-            viewHolders.tvTotalPrice.setText(String.valueOf(totalPrice));
+            int totalPrice = drinkList.get(position).getPrice() * drinkList.get(position).getNowQty();
+            viewHolders.tvTotalPrice.setText(getDecimalFormattedString(String.valueOf(totalPrice)));
 
             return view;
         } catch (Exception e) {

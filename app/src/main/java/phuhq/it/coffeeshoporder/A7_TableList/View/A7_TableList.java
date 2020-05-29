@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,6 +31,7 @@ import static phuhq.it.coffeeshoporder.G_Common.G_Common.STATUS_FREE;
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.STATUS_ORDER;
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.STATUS_PENDING;
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.flagTableList;
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.tableOrder;
 
 public class A7_TableList extends AppCompatActivity {
     //region  AVAILABLE
@@ -127,6 +129,7 @@ public class A7_TableList extends AppCompatActivity {
             lvTable.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    tableOrder = tableList.get(position).getId();
                     Intent intent = new Intent(A7_TableList.this, A3_OrderDetails.class);
                     startActivity(intent);
                 }

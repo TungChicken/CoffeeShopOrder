@@ -79,7 +79,7 @@ public class A2_Login_Pass extends AppCompatActivity {
                             if (clsUser.getPassWord().equals(passWord)) {
                                 G_Common.userLogin = userName;
                                 Intent intent = new Intent(A2_Login_Pass.this, MainActivity.class);
-                                intent.putExtra("USER", clsUser);
+                                //intent.putExtra("USER", clsUser);
                                 startActivity(intent);
                                 progressBar.setVisibility(View.GONE);
                                 finish();

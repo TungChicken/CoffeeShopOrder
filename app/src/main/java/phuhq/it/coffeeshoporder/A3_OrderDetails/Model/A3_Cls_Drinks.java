@@ -1,6 +1,8 @@
 package phuhq.it.coffeeshoporder.A3_OrderDetails.Model;
 
-public class A3_Drinks {
+import java.io.Serializable;
+
+public class A3_Cls_Drinks implements Serializable {
     private String DrinkName, Image, DrinkID;
     private int NowQty;
     private int Price;

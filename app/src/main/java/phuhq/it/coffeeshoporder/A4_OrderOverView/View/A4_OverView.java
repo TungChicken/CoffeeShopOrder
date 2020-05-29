@@ -8,17 +8,27 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 import java.util.List;
 
-import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Drinks;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Cls_Drinks;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Cls_Order;
 import phuhq.it.coffeeshoporder.A4_OrderOverView.Presenter.A4_OverViewAdapter;
 import phuhq.it.coffeeshoporder.R;
+
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.STATUS_PENDING;
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.getDecimalFormattedString;
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.tableOrder;
 
 public class A4_OverView extends AppCompatActivity {
     //region  AVAILABLE
     private ListView lvDrink;
-    private List<A3_Drinks> drinkListOrder;
+    private ArrayList<A3_Cls_Drinks> drinkListOrder;
     private TextView tvOrderTotal;
+    private int orderTotal = 0;
     //endregion
 
     //region FORM EVENTS
@@ -35,16 +45,16 @@ public class A4_OverView extends AppCompatActivity {
         try {
             lvDrink = findViewById(R.id.a4_listView);
             tvOrderTotal = findViewById(R.id.a4_tv_OrderTotal);
-//            Intent intent = getIntent();
-//            ArrayList<A3_Drinks> drinkList = (ArrayList<A3_Drinks>) intent.getSerializableExtra("ORDER");
-//            drinkListOrder = new ArrayList<>();
-//
-//            assert drinkList != null;
-//            for (int i = 0; i < drinkList.size(); i++) {
-//                if (drinkList.get(i).getNowQty() > 0) {
-//                    drinkListOrder.add(drinkList.get(i));
-//                }
-//            }
+            Intent intent = getIntent();
+            ArrayList<A3_Cls_Drinks> drinkList = (ArrayList<A3_Cls_Drinks>) intent.getSerializableExtra("ORDERS");
+            drinkListOrder = new ArrayList<>();
+
+            assert drinkList != null;
+            for (int i = 0; i < drinkList.size(); i++) {
+                if (drinkList.get(i).getNowQty() > 0) {
+                    drinkListOrder.add(drinkList.get(i));
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,11 +76,32 @@ public class A4_OverView extends AppCompatActivity {
             this.lvDrink.setAdapter(detailsAdapter);
 
             // Tính tổng order
-            double orderTotal = 0;
             for (int i = 0; i < drinkListOrder.size(); i++) {
                 orderTotal += drinkListOrder.get(i).getNowQty() * drinkListOrder.get(i).getPrice();
             }
-            tvOrderTotal.setText(String.valueOf(orderTotal));
+            tvOrderTotal.setText(getDecimalFormattedString(String.valueOf(orderTotal)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //endregion
+
+    //region SET DATA ORDER
+    private void setDataOrder() {
+        try {
+            DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+            A3_Cls_Order clsOrder =  new A3_Cls_Order(tableOrder, "order", drinkListOrder, orderTotal);
+            database.child("CSO").child("TBT_Orders").child(tableOrder).setValue(clsOrder);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateStatusTable() {
+        try {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("CSO").child("TBM_Tables");
+            myRef.child(tableOrder).child("status").setValue(STATUS_PENDING);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -80,8 +111,11 @@ public class A4_OverView extends AppCompatActivity {
     //region ON TOUCH
     public void OrderNow(View view) {
         try {
+            setDataOrder();
+            updateStatusTable();
             Intent intent = new Intent(A4_OverView.this, A4_OrderComplete.class);
             startActivity(intent);
+            finish();
         } catch (Exception e) {
             e.printStackTrace();
         }

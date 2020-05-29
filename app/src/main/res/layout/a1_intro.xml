@@ -50,6 +50,7 @@
         android:id="@+id/textView29"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Development by Quoc Phu"
         android:textColor="@color/white"

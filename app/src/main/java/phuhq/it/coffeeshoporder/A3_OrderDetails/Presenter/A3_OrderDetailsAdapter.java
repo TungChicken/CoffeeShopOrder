@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Drinks;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Cls_Drinks;
 import phuhq.it.coffeeshoporder.R;
 
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.getDecimalFormattedString;
@@ -22,9 +22,9 @@ import static phuhq.it.coffeeshoporder.G_Common.G_Common.getDecimalFormattedStri
 public class A3_OrderDetailsAdapter extends BaseAdapter {
     private Context context;
     private int layout;
-    private List<A3_Drinks> drinkList;
+    private List<A3_Cls_Drinks> drinkList;
 
-    public A3_OrderDetailsAdapter(Context context, int layout, List<A3_Drinks> drinkList) {
+    public A3_OrderDetailsAdapter(Context context, int layout, List<A3_Cls_Drinks> drinkList) {
         this.context = context;
         this.layout = layout;
         this.drinkList = drinkList;
@@ -108,7 +108,7 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
                         finalViewHolders.btnIncrease.setClickable(true);
 
                         // Thay đổi ở Firebase
-                        onChangeOrderNumber(drinkList.get(position));
+                        //onChangeOrderNumber(drinkList.get(position));
                     }
                 }
             });
@@ -130,7 +130,7 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
                         finalViewHolders.btnReduction.setClickable(true);
 
                         // Thay đổi ở Firebase
-                        onChangeOrderNumber(drinkList.get(position));
+                        //onChangeOrderNumber(drinkList.get(position));
                     }
                 }
             });
@@ -142,7 +142,7 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
         }
     }
 
-    private void onChangeOrderNumber(A3_Drinks drinks) {
+    private void onChangeOrderNumber(A3_Cls_Drinks drinks) {
         try {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("CSO").child("TBM_Drink");

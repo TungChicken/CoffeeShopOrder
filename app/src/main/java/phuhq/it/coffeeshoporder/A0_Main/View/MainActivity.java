@@ -18,7 +18,7 @@ import static phuhq.it.coffeeshoporder.G_Common.G_Common.flagTableList;
 
 public class MainActivity extends AppCompatActivity {
     //region AVAILABLE
-    public A2_Cls_User clsUser;
+    //public A2_Cls_User clsUser;
     //endregion
 
     //region FROM EVENT
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void mainLoad() {
         addControls();
-        clsUser = (A2_Cls_User) getIntent().getSerializableExtra("USER");
+        //clsUser = (A2_Cls_User) getIntent().getSerializableExtra("USER");
     }
     //endregion
 
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onUserAccount(View view) {
         Intent intent = new Intent(MainActivity.this, A6_UserInfo.class);
-        intent.putExtra("USER", clsUser);
+        //intent.putExtra("USER", clsUser);
         startActivity(intent);
     }
     //endregion

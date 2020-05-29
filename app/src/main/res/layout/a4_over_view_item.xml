@@ -74,9 +74,8 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:text="Total:  $"
+        android:textSize="14sp"
+        android:text="Amount"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/a4_item_tvTotalPrice"
         app:layout_constraintTop_toTopOf="parent" />

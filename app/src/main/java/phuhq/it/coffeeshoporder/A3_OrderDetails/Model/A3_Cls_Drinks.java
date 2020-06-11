@@ -3,8 +3,8 @@ package phuhq.it.coffeeshoporder.A3_OrderDetails.Model;
 import java.io.Serializable;
 
 public class A3_Cls_Drinks implements Serializable {
-    private String DrinkName, Image, DrinkID;
-    private int NowQty;
+    private String DrinkName, Image ;
+    private int NowQty, DrinkID;
     private int Price;
 
 
@@ -40,11 +40,11 @@ public class A3_Cls_Drinks implements Serializable {
         Price = price;
     }
 
-    public String getDrinkID() {
+    public int getDrinkID() {
         return DrinkID;
     }
 
-    public void setDrinkID(String drinkID) {
+    public void setDrinkID(int drinkID) {
         DrinkID = drinkID;
     }
 }

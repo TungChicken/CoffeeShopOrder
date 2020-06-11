@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".A10_Admin_User.View.A10_Admin_AddUser">
+    tools:context=".A11_Admin_Drinks.View.A11_Admin_NewDrinks">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_width="80dp"
             android:layout_height="58dp"
             android:layout_marginTop="8dp"
-            android:src="@drawable/a10_ic_add_user"
+            android:src="@drawable/a11_ic_new_drink"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="Create new user account"
+            android:text="Create new drinks"
             android:textColor="@color/primaryTextColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/imageView6"
@@ -88,15 +88,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="User Login"
-            app:layout_constraintBottom_toBottomOf="@+id/a10_addUser_edUserID"
+            android:text="Drink ID"
+            app:layout_constraintBottom_toBottomOf="@+id/a11_newDrink_edDrinkID"
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/a10_addUser_edUserID" />
+            app:layout_constraintTop_toTopOf="@+id/a11_newDrink_edDrinkID" />
 
         <EditText
-            android:id="@+id/a10_addUser_edUserID"
+            android:enabled="false"
+            android:id="@+id/a11_newDrink_edDrinkID"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -116,118 +117,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Password"
-            app:layout_constraintBottom_toBottomOf="@+id/a10_addUser_edPass"
+            android:text="Drink Name"
+            app:layout_constraintBottom_toBottomOf="@+id/a11_newDrink_edDrinkName"
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/a10_addUser_edPass" />
+            app:layout_constraintTop_toTopOf="@+id/a11_newDrink_edDrinkName" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Permission"
-            app:layout_constraintBottom_toBottomOf="@+id/a10_addUser_spPermission"
+            android:text="Price"
+            app:layout_constraintBottom_toBottomOf="@+id/a11_newDrink_edPrice"
             app:layout_constraintEnd_toStartOf="@+id/guideline1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/a10_addUser_spPermission" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Full Name"
-            app:layout_constraintBottom_toBottomOf="@+id/a10_addUser_edFullName"
-            app:layout_constraintEnd_toStartOf="@+id/guideline1"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/a10_addUser_edFullName" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Date Of Birth"
-            app:layout_constraintBottom_toBottomOf="@+id/a10_addUser_edDate"
-            app:layout_constraintEnd_toStartOf="@+id/guideline1"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/a10_addUser_edDate" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Gender"
-            app:layout_constraintBottom_toBottomOf="@+id/textView14"
-            app:layout_constraintEnd_toStartOf="@+id/guideline1"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView14" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Phone"
-            app:layout_constraintBottom_toBottomOf="@+id/a10_addUser_edPhone"
-            app:layout_constraintEnd_toStartOf="@+id/guideline1"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/a10_addUser_edPhone" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Address"
-            app:layout_constraintBottom_toBottomOf="@+id/a10_addUser_edAddress"
-            app:layout_constraintEnd_toStartOf="@+id/guideline1"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/a10_addUser_edAddress" />
+            app:layout_constraintTop_toTopOf="@+id/a11_newDrink_edPrice" />
 
         <EditText
-            android:id="@+id/a10_addUser_edPass"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/g_radius_text"
-            android:hint=""
-            android:inputType="textPassword"
-            android:paddingStart="5dp"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline1_2"
-            app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toBottomOf="@+id/a10_addUser_edUserID"
-            tools:ignore="RtlSymmetry" />
-
-        <Spinner
-            android:id="@+id/a10_addUser_spPermission"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/g_radius_text"
-            android:paddingStart="5dp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline1_2"
-            app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toBottomOf="@+id/a10_addUser_edPass"
-            tools:ignore="RtlSymmetry" />
-
-        <EditText
-            android:id="@+id/a10_addUser_edFullName"
+            android:id="@+id/a11_newDrink_edDrinkName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -239,71 +149,11 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline1_2"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toBottomOf="@+id/a10_addUser_spPermission"
+            app:layout_constraintTop_toBottomOf="@+id/a11_newDrink_edDrinkID"
             tools:ignore="RtlSymmetry" />
 
         <EditText
-            android:id="@+id/a10_addUser_edDate"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/g_radius_text"
-            android:hint=""
-            android:paddingStart="5dp"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline1_2"
-            app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toBottomOf="@+id/a10_addUser_edFullName"
-            tools:ignore="RtlSymmetry" />
-
-        <RadioGroup
-            android:id="@+id/textView14"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toStartOf="@+id/guideline1_2"
-            app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toBottomOf="@+id/a10_addUser_edDate">
-
-            <RadioButton
-                android:id="@+id/a10_addUser_rdMale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Male" />
-
-            <RadioButton
-                android:id="@+id/a10_addUser_rdFeMale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="FeMale" />
-        </RadioGroup>
-
-        <EditText
-            android:id="@+id/a10_addUser_edPhone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/g_radius_text"
-            android:hint=""
-            android:maxLength="10"
-            android:inputType="phone"
-            android:paddingStart="5dp"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline1_2"
-            app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toBottomOf="@+id/textView14"
-            tools:ignore="RtlSymmetry" />
-
-        <EditText
-            android:id="@+id/a10_addUser_edAddress"
+            android:id="@+id/a11_newDrink_edPrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -311,15 +161,13 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/g_radius_text"
-            android:ems="10"
-            android:hint=""
             android:paddingStart="5dp"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline1_2"
             app:layout_constraintStart_toStartOf="@+id/guideline1"
-            app:layout_constraintTop_toBottomOf="@+id/a10_addUser_edPhone"
+            app:layout_constraintTop_toBottomOf="@+id/a11_newDrink_edDrinkName"
             tools:ignore="RtlSymmetry" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -393,8 +241,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:onClick="onCreateUser"
             android:background="@drawable/g_radius_gb_button"
+            android:onClick="onCreateDrink"
             android:text="Create"
             android:textAllCaps="false"
             android:textColor="@color/green"
@@ -412,8 +260,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/g_radius_gb_button"
-            android:text="Cancel"
             android:onClick="onCancel"
+            android:text="Cancel"
             android:textAllCaps="false"
             android:textColor="@color/red_50"
             app:layout_constraintBottom_toBottomOf="@+id/guideline8"

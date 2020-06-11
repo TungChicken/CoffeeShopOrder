@@ -146,7 +146,7 @@ public class A3_OrderDetailsAdapter extends BaseAdapter {
         try {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference("CSO").child("TBM_Drink");
-            myRef.child(drinks.getDrinkID()).child("NowQty").setValue(drinks.getNowQty());
+            //myRef.child(drinks.getDrinkID()).child("NowQty").setValue(drinks.getNowQty());
         } catch (Exception e) {
             e.printStackTrace();
         }

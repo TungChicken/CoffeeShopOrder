@@ -13,6 +13,7 @@ public class G_Common {
     public static final String PER_ADMIN = "admin";
     public static final String PER_CHEF = "chef";
     public static final String PER_EMP = "employee";
+    public static final String PASS_DEFAULT = "123";
 
     public static String getDecimalFormattedString(String value) {
         StringTokenizer lst = new StringTokenizer(value, ".");

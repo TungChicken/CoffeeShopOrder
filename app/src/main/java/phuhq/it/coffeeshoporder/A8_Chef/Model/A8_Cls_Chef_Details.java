@@ -2,15 +2,15 @@ package phuhq.it.coffeeshoporder.A8_Chef.Model;
 
 import java.io.Serializable;
 
-public class A8_Cls_Chef_Details  implements Serializable {
-    private String drinkID, drinkName;
-    private int  nowQty, price;
+public class A8_Cls_Chef_Details implements Serializable {
+    private String drinkName;
+    private int nowQty, price, drinkID;
 
-    public String getDrinkID() {
+    public int getDrinkID() {
         return drinkID;
     }
 
-    public void setDrinkID(String drinkID) {
+    public void setDrinkID(int drinkID) {
         this.drinkID = drinkID;
     }
 

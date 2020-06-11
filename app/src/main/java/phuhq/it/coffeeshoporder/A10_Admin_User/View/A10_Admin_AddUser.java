@@ -31,6 +31,7 @@ public class A10_Admin_AddUser extends AppCompatActivity {
     private RadioButton rdMale, rdFeMale;
     private String userID;
 
+    //region FORM EVENT
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +39,9 @@ public class A10_Admin_AddUser extends AppCompatActivity {
         addControls();
         mainLoad();
     }
+    //endregion
 
+    //region MAIN LOAD
     public void addControls() {
         spPermission = findViewById(R.id.a10_addUser_spPermission);
         edUserID = findViewById(R.id.a10_addUser_edUserID);
@@ -98,6 +101,7 @@ public class A10_Admin_AddUser extends AppCompatActivity {
     }
     //endregion
 
+    //region SET DATA USER
     public A2_Cls_User onGetDataFromView() {
         A2_Cls_User clsUser = new A2_Cls_User();
         try {
@@ -128,7 +132,6 @@ public class A10_Admin_AddUser extends AppCompatActivity {
         });
     }
 
-    //region SET DATA ORDER
     private void addNewUser() {
         try {
             DatabaseReference database = FirebaseDatabase.getInstance().getReference();
@@ -149,4 +152,9 @@ public class A10_Admin_AddUser extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    public void onCancel(View view){
+        A10_Admin_AddUser.this.finish();
+    }
+    //endregion
 }

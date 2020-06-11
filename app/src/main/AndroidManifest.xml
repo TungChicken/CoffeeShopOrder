@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".A10_Admin_User.View.A10_Admin_AddUser"></activity>
+        <activity android:name=".A11_Admin_Drinks.View.A11_Admin_NewDrinks"></activity>
+        <activity android:name=".A10_Admin_User.View.A10_Admin_ResetPassword" />
+        <activity android:name=".A10_Admin_User.View.A10_Admin_AddUser" />
         <activity android:name=".A9_Admin_Menu.View.A9_Admin_Menu" />
         <activity android:name=".A8_Chef.View.A8_Chef_View_Details" />
         <activity android:name=".A8_Chef.View.A8_Chef_View_Order" />

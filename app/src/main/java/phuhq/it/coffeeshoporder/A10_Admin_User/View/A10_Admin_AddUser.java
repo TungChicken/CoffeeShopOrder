@@ -1,0 +1,152 @@
+package phuhq.it.coffeeshoporder.A10_Admin_User.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import phuhq.it.coffeeshoporder.A2_Login.Model.A2_Cls_User;
+import phuhq.it.coffeeshoporder.R;
+
+public class A10_Admin_AddUser extends AppCompatActivity {
+    private Spinner spPermission;
+    private EditText edUserID, edPass, edFullName, edDate, edPhone, edAddress;
+    private RadioButton rdMale, rdFeMale;
+    private String userID;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.a10_admin_add_user);
+        addControls();
+        mainLoad();
+    }
+
+    public void addControls() {
+        spPermission = findViewById(R.id.a10_addUser_spPermission);
+        edUserID = findViewById(R.id.a10_addUser_edUserID);
+        edPass = findViewById(R.id.a10_addUser_edPass);
+        edFullName = findViewById(R.id.a10_addUser_edFullName);
+        edDate = findViewById(R.id.a10_addUser_edDate);
+        edPhone = findViewById(R.id.a10_addUser_edPhone);
+        edAddress = findViewById(R.id.a10_addUser_edAddress);
+        rdMale = findViewById(R.id.a10_addUser_rdMale);
+        rdFeMale = findViewById(R.id.a10_addUser_rdFeMale);
+    }
+
+    public void mainLoad() {
+        try {
+            addPermission();
+            onDateClick();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addPermission() {
+        try {
+            List<String> per = new ArrayList<>();
+            per.add("admin");
+            per.add("chef");
+            per.add("employee");
+
+            ArrayAdapter arrayAdapter = new ArrayAdapter<String>(A10_Admin_AddUser.this, android.R.layout.simple_list_item_1, per);
+            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spPermission.setAdapter(arrayAdapter);
+            spPermission.setSelection(2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openDateDialog() {
+        try {
+            final Calendar calendar = Calendar.getInstance();
+            int nam = calendar.get(Calendar.YEAR);
+            int thang = calendar.get(Calendar.MONTH);
+            int ngay = calendar.get(Calendar.DAY_OF_MONTH);
+
+            final DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    calendar.set(year, month, dayOfMonth);
+                    @SuppressLint("SimpleDateFormat") SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+                    edDate.setText(f.format(calendar.getTime()));
+                }
+            }, nam, thang, ngay);
+            datePickerDialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //endregion
+
+    public A2_Cls_User onGetDataFromView() {
+        A2_Cls_User clsUser = new A2_Cls_User();
+        try {
+            userID = edUserID.getText().toString();
+            clsUser.setPassWord(edPass.getText().toString());
+            clsUser.setPermission(spPermission.getSelectedItem().toString());
+            clsUser.setFullName(edFullName.getText().toString());
+            clsUser.setDateOfBirth(edDate.getText().toString());
+            clsUser.setPhone(edPhone.getText().toString());
+            clsUser.setAddress(edAddress.getText().toString());
+            if (rdMale.isChecked())
+                clsUser.setGender("Male");
+            else
+                clsUser.setGender("FeMale");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return clsUser;
+    }
+
+    private void onDateClick() {
+        edDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDateDialog();
+            }
+        });
+    }
+
+    //region SET DATA ORDER
+    private void addNewUser() {
+        try {
+            DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+            A2_Cls_User clsInfo = new A2_Cls_User();
+            clsInfo = onGetDataFromView();
+            database.child("CSO").child("TBM_Users").child(userID).setValue(clsInfo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onCreateUser(View view) {
+        try {
+            addNewUser();
+            A10_Admin_AddUser.this.finish();
+            Toast.makeText(this, "Add new user successful", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

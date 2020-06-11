@@ -20,10 +20,12 @@ import com.google.firebase.database.ValueEventListener;
 import phuhq.it.coffeeshoporder.A0_Main.View.MainActivity;
 import phuhq.it.coffeeshoporder.A2_Login.Model.A2_Cls_User;
 import phuhq.it.coffeeshoporder.A8_Chef.View.A8_Chef_View_Order;
+import phuhq.it.coffeeshoporder.A9_Admin_Menu.View.A9_Admin_Menu;
 import phuhq.it.coffeeshoporder.G_Common.G_Common;
 import phuhq.it.coffeeshoporder.R;
 
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.PER_ADMIN;
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.PER_CHEF;
 
 public class A2_Login_Pass extends AppCompatActivity {
     //region AVAILABLE
@@ -81,12 +83,15 @@ public class A2_Login_Pass extends AppCompatActivity {
                             assert clsUser != null;
                             if (clsUser.getPassWord().equals(passWord)) {
                                 G_Common.userLogin = userName;
-                                if (clsUser.getPermission().equals(PER_ADMIN)){
+                                if (clsUser.getPermission().equals(PER_ADMIN)) {
+                                    Intent intent = new Intent(A2_Login_Pass.this, A9_Admin_Menu.class);
+                                    startActivity(intent);
+                                } else if (clsUser.getPermission().equals(PER_CHEF)) {
+                                    Intent intent = new Intent(A2_Login_Pass.this, A8_Chef_View_Order.class);
+                                    startActivity(intent);
+                                } else {
                                     Intent intent = new Intent(A2_Login_Pass.this, MainActivity.class);
                                     //intent.putExtra("USER", clsUser);
-                                    startActivity(intent);
-                                }else {
-                                    Intent intent = new Intent(A2_Login_Pass.this, A8_Chef_View_Order.class);
                                     startActivity(intent);
                                 }
 

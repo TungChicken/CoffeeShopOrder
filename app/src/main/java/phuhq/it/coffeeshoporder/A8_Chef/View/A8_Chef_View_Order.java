@@ -32,9 +32,11 @@ import static phuhq.it.coffeeshoporder.G_Common.G_Common.STATUS_PENDING;
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.flagTableList;
 
 public class A8_Chef_View_Order extends AppCompatActivity {
+    //region AVAILABLE
     private GridView lvTable;
     ArrayList<A8_Cls_Chef> tableList = new ArrayList<>();
     ArrayList<A8_Cls_Chef> drinkList = new ArrayList<>();
+    //endregion
 
     //region FORM EVENT
     @Override

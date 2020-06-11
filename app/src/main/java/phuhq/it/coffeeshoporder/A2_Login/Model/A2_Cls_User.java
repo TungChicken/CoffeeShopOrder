@@ -3,7 +3,7 @@ package phuhq.it.coffeeshoporder.A2_Login.Model;
 import java.io.Serializable;
 
 public class A2_Cls_User implements Serializable {
-    private String passWord, fullName, permission, address, dateOfBirth, email, gender;
+    private String passWord, fullName, permission, address, dateOfBirth, email, gender, phone;
 
     public String getFullName() {
         return fullName;
@@ -59,5 +59,13 @@ public class A2_Cls_User implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

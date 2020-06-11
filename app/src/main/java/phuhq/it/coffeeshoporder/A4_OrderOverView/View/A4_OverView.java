@@ -21,6 +21,7 @@ import phuhq.it.coffeeshoporder.R;
 
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.STATUS_PENDING;
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.getDecimalFormattedString;
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.tableNameOrder;
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.tableOrder;
 
 public class A4_OverView extends AppCompatActivity {
@@ -90,7 +91,7 @@ public class A4_OverView extends AppCompatActivity {
     private void setDataOrder() {
         try {
             DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-            A3_Cls_Order clsOrder =  new A3_Cls_Order(tableOrder, "order", drinkListOrder, orderTotal);
+            A3_Cls_Order clsOrder = new A3_Cls_Order(tableOrder, tableNameOrder, "pending", drinkListOrder, orderTotal);
             database.child("CSO").child("TBT_Orders").child(tableOrder).setValue(clsOrder);
         } catch (Exception e) {
             e.printStackTrace();

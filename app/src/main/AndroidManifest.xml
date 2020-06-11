@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".A7_TableList.View.A7_TableList"></activity>
+        <activity android:name=".A8_Chef.View.A8_Chef_View_Details"></activity>
+        <activity android:name=".A8_Chef.View.A8_Chef_View_Order" />
+        <activity android:name=".A7_TableList.View.A7_TableList" />
         <activity android:name=".A6_UserInfo.View.A6_UserInfo" />
         <activity android:name=".A5_ChangePassword.View.A5_ChangePassword" />
         <activity android:name=".A2_Login.View.A2_Login_Pass" /> <!-- <receiver android:name=".G_Setting.BootReceiver"> -->

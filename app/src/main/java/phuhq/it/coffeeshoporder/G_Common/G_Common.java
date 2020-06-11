@@ -6,9 +6,12 @@ public class G_Common {
     public static String userLogin;
     public static boolean flagTableList = false; //false: order;   true:invoice
     public static String tableOrder;
+    public static String tableNameOrder;
     public static final String STATUS_ORDER = "order";
     public static final String STATUS_PENDING = "pending";
     public static final String STATUS_FREE = "free";
+    public static final String PER_ADMIN = "admin";
+    public static final String PER_CHEF = "chef";
 
     public static String getDecimalFormattedString(String value) {
         StringTokenizer lst = new StringTokenizer(value, ".");

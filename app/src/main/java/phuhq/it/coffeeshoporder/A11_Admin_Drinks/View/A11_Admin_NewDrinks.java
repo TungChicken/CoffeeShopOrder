@@ -1,12 +1,13 @@
 package phuhq.it.coffeeshoporder.A11_Admin_Drinks.View;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,7 +17,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import phuhq.it.coffeeshoporder.A10_Admin_User.View.A10_Admin_ResetPassword;
 import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Cls_Drinks;
 import phuhq.it.coffeeshoporder.R;
 
@@ -117,9 +117,26 @@ public class A11_Admin_NewDrinks extends AppCompatActivity {
             A3_Cls_Drinks a3ClsDrinks = new A3_Cls_Drinks();
             a3ClsDrinks = getDataFromView();
             DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-            database.child("CSO").child("TBM_Drink").child(edDrinkID.getText().toString()).setValue(a3ClsDrinks);
-            Toast.makeText(this, "Add a new drink successful", Toast.LENGTH_SHORT).show();
+            database.child("CSO").child("TBM_Drink").child(edDrinkID.getText().toString()).setValue(a3ClsDrinks, new DatabaseReference.CompletionListener() {
+                @Override
+                public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                    if (databaseError == null) {
+                        Toast.makeText(A11_Admin_NewDrinks.this, "Add new dirk successful", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(A11_Admin_NewDrinks.this, "Fail to add new dirk!!!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
             A11_Admin_NewDrinks.this.finish();
+
+//            DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+//            for (int i = 1; i <= 5000; i++) {
+//                A3_Cls_Drinks a3_cls_drinks = new A3_Cls_Drinks("Dink Name " + i, null, 1 + i, i, 10 + i);
+//                database.child("CSO").child("TBM_TEST").child(String.valueOf(i)).setValue(a3_cls_drinks);
+//            }
+//            edDrinkID.setText("Finish");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

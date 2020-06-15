@@ -1,14 +1,14 @@
 package phuhq.it.coffeeshoporder.A3_OrderDetails.View;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,18 +18,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Cls_Order;
-import phuhq.it.coffeeshoporder.A3_OrderDetails.Presenter.A3_OrderDetailsAdapter;
 import phuhq.it.coffeeshoporder.A3_OrderDetails.Model.A3_Cls_Drinks;
+import phuhq.it.coffeeshoporder.A3_OrderDetails.Presenter.A3_OrderDetailsAdapter;
 import phuhq.it.coffeeshoporder.A4_OrderOverView.View.A4_OverView;
-import phuhq.it.coffeeshoporder.G_Common.G_Common;
 import phuhq.it.coffeeshoporder.R;
-
-import static phuhq.it.coffeeshoporder.G_Common.G_Common.tableOrder;
 
 public class A3_OrderDetails extends AppCompatActivity {
     //region  AVAILABLE
@@ -63,6 +56,7 @@ public class A3_OrderDetails extends AppCompatActivity {
             // Get list from Firebase
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             final DatabaseReference drinks = database.getReference("CSO").child("TBM_Drink");
+            //final DatabaseReference drinks = database.getReference("CSO").child("TBM_TEST");
             drinks.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -91,6 +85,8 @@ public class A3_OrderDetails extends AppCompatActivity {
         try {
             // Xóa dữ liệu cũ trên lưới
             lvDrink.setAdapter(null);
+            int max = drinkList.size();
+            Toast.makeText(this, "" + max, Toast.LENGTH_LONG).show();
 
             // Khởi tạo apdater
             A3_OrderDetailsAdapter detailsAdapter = new A3_OrderDetailsAdapter(this, R.layout.a3_order_details_item, drinkList);

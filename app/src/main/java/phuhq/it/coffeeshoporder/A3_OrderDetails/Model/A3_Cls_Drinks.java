@@ -7,6 +7,16 @@ public class A3_Cls_Drinks implements Serializable {
     private int NowQty, DrinkID;
     private int Price;
 
+    public A3_Cls_Drinks() {
+    }
+
+    public A3_Cls_Drinks(String drinkName, String image, int nowQty, int drinkID, int price) {
+        DrinkName = drinkName;
+        Image = image;
+        NowQty = nowQty;
+        DrinkID = drinkID;
+        Price = price;
+    }
 
     public String getDrinkName() {
         return DrinkName;

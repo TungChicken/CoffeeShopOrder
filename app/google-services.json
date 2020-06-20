@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "292494405274-ncksvt67edlqhdvmjnjbtpjq621eucqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "phuhq.it.coffeeshoporder",
+            "certificate_hash": "e6d19435eda43cb5fbd72aa9037acb4014f40510"
+          }
+        },
+        {
           "client_id": "292494405274-vhisosqoreefubvslrdu0sec09ajjq2e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

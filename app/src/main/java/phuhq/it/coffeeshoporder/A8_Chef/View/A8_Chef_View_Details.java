@@ -1,12 +1,12 @@
 package phuhq.it.coffeeshoporder.A8_Chef.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -14,13 +14,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 import phuhq.it.coffeeshoporder.A8_Chef.Model.A8_Cls_Chef;
-import phuhq.it.coffeeshoporder.A8_Chef.Model.A8_Cls_Chef_Details;
 import phuhq.it.coffeeshoporder.A8_Chef.Presenter.A8_Chef_Details_Adapter;
 import phuhq.it.coffeeshoporder.R;
 
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.STATUS_ORDER;
-import static phuhq.it.coffeeshoporder.G_Common.G_Common.STATUS_PENDING;
-import static phuhq.it.coffeeshoporder.G_Common.G_Common.tableOrder;
 
 public class A8_Chef_View_Details extends AppCompatActivity {
     private ListView lvDrink;
@@ -75,11 +72,18 @@ public class A8_Chef_View_Details extends AppCompatActivity {
     private void updateStatusTable() {
         try {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+            // Cập nhật trạng thái của bàn
             DatabaseReference tableMaster = database.getReference("CSO").child("TBM_Tables");
             tableMaster.child(drinkListOrder.get(position).getTableID()).child("status").setValue(STATUS_ORDER);
 
+            // Cập nhật trạng thái của đơn hàng
             DatabaseReference tableOrder = database.getReference("CSO").child("TBT_Orders");
             tableOrder.child(drinkListOrder.get(position).getTableID()).child("status").setValue(STATUS_ORDER);
+
+            // Cập nhật tên bàn hoàn thành
+            DatabaseReference tableNotifications = database.getReference("CSO").child("TBT_Notifications");
+            tableNotifications.child("TableName").setValue(drinkListOrder.get(position).getTable());
         } catch (Exception e) {
             e.printStackTrace();
         }

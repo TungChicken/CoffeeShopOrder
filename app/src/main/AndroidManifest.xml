@@ -16,6 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".G_Setting.ReceivedMessage"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity android:name=".A11_Admin_Drinks.View.A11_Admin_NewDrinks"></activity>
         <activity android:name=".A10_Admin_User.View.A10_Admin_ResetPassword" />
         <activity android:name=".A10_Admin_User.View.A10_Admin_AddUser" />

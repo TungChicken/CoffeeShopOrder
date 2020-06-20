@@ -85,8 +85,6 @@ public class A3_OrderDetails extends AppCompatActivity {
         try {
             // Xóa dữ liệu cũ trên lưới
             lvDrink.setAdapter(null);
-            int max = drinkList.size();
-            Toast.makeText(this, "" + max, Toast.LENGTH_LONG).show();
 
             // Khởi tạo apdater
             A3_OrderDetailsAdapter detailsAdapter = new A3_OrderDetailsAdapter(this, R.layout.a3_order_details_item, drinkList);

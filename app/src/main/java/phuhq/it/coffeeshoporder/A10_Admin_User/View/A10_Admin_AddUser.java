@@ -11,10 +11,14 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,6 +32,7 @@ public class A10_Admin_AddUser extends AppCompatActivity {
     private Spinner spPermission;
     private EditText edUserID, edPass, edFullName, edDate, edPhone, edAddress;
     private RadioButton rdMale, rdFeMale;
+    private boolean flagCheck = false;
     //private String userID;
 
     //region FORM EVENT
@@ -131,18 +136,44 @@ public class A10_Admin_AddUser extends AppCompatActivity {
         });
     }
 
+    public boolean checkUserExist(String userName) {
+        try {
+            // Check vaild user registered
+            final FirebaseDatabase[] database = {FirebaseDatabase.getInstance()};
+            final DatabaseReference users = database[0].getReference("CSO").child("TBM_Users").child(userName);
+            users.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    try {
+                        if (dataSnapshot.getValue() != null) {
+                            Toast.makeText(A10_Admin_AddUser.this, "Already user in system. Please try again!", Toast.LENGTH_SHORT).show();
+                            edUserID.setError("Already user in system!");
+                        } else {
+                            addNewUser();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flagCheck;
+    }
+
     private void addNewUser() {
         try {
             DatabaseReference database = FirebaseDatabase.getInstance().getReference();
             A2_Cls_User clsInfo = onGetDataFromView();
-            if (clsInfo.getUserID().isEmpty()){
-                Toast.makeText(this, "Please input information", Toast.LENGTH_SHORT).show();
-                edUserID.setError("Input data here!");
-            }else {
-                database.child("CSO").child("TBM_Users").child(clsInfo.getUserID()).setValue(clsInfo);
-                A10_Admin_AddUser.this.finish();
-                Toast.makeText(this, "Add new user successful", Toast.LENGTH_SHORT).show();
-            }
+            database.child("CSO").child("TBM_Users").child(clsInfo.getUserID()).setValue(clsInfo);
+            A10_Admin_AddUser.this.finish();
+            Toast.makeText(this, "Add new user successful", Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -151,13 +182,18 @@ public class A10_Admin_AddUser extends AppCompatActivity {
 
     public void onCreateUser(View view) {
         try {
-            addNewUser();
+            if (edUserID.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Please input information", Toast.LENGTH_SHORT).show();
+                edUserID.setError("Input data here!");
+            } else {
+                checkUserExist(edUserID.getText().toString());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void onCancel(View view){
+    public void onCancel(View view) {
         A10_Admin_AddUser.this.finish();
     }
     //endregion

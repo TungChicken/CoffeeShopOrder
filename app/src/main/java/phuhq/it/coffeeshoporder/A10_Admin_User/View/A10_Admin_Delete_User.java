@@ -74,7 +74,8 @@ public class A10_Admin_Delete_User extends AppCompatActivity {
     public void setDataSpinner() {
         listUserID.clear();
         for (int i = 0; i < listUser.size(); i++) {
-            listUserID.add(listUser.get(i).getUserID());
+            if (!listUser.get(i).getUserID().equals("Admin"))
+                listUserID.add(listUser.get(i).getUserID());
         }
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listUserID);

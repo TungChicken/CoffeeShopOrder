@@ -1,14 +1,6 @@
 package phuhq.it.coffeeshoporder.G_Common;
 
-import android.app.Notification;
-import android.content.Context;
-
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
 import java.util.StringTokenizer;
-
-import phuhq.it.coffeeshoporder.R;
 
 public class G_Common {
     public static String userLogin;
@@ -51,23 +43,6 @@ public class G_Common {
             }
             str3 = str1.charAt(k) + str3;
             i++;
-        }
-    }
-
-    public static void showNotifications(Context context, String message) {
-        try {
-            String title = message + STATUS_FINISH;
-            String body = "Finish for build";
-            Notification notification = new NotificationCompat.Builder(context)
-                    .setContentTitle(title)
-                    .setContentText(body)
-                    .setSmallIcon(R.drawable.ic_check)
-                    .build();
-
-            NotificationManagerCompat manager = NotificationManagerCompat.from(context);
-            manager.notify(123, notification);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

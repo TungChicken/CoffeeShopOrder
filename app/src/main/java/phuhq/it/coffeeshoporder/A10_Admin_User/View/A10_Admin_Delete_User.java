@@ -1,12 +1,16 @@
 package phuhq.it.coffeeshoporder.A10_Admin_User.View;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -20,9 +24,7 @@ import java.util.ArrayList;
 import phuhq.it.coffeeshoporder.A2_Login.Model.A2_Cls_User;
 import phuhq.it.coffeeshoporder.R;
 
-import static phuhq.it.coffeeshoporder.G_Common.G_Common.PASS_DEFAULT;
-
-public class A10_Admin_ResetPassword extends AppCompatActivity {
+public class A10_Admin_Delete_User extends AppCompatActivity {
     private Spinner spUserID;
     private ArrayList<A2_Cls_User> listUser = new ArrayList<>();
     private ArrayList<String> listUserID = new ArrayList<>();
@@ -30,11 +32,12 @@ public class A10_Admin_ResetPassword extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.a10_admin_reset_password);
+        setContentView(R.layout.a10_admin_delete_user);
         addControls();
         getDataFireBase();
     }
 
+    //region MAIN LOAD
     public void addControls() {
         spUserID = findViewById(R.id.a10_reset_edUserID);
     }
@@ -69,6 +72,7 @@ public class A10_Admin_ResetPassword extends AppCompatActivity {
     }
 
     public void setDataSpinner() {
+        listUserID.clear();
         for (int i = 0; i < listUser.size(); i++) {
             listUserID.add(listUser.get(i).getUserID());
         }
@@ -78,42 +82,62 @@ public class A10_Admin_ResetPassword extends AppCompatActivity {
         spUserID.setAdapter(adapter);
 
     }
+    //endregion
 
+    //region ON TOUCH
     public void onCancel(View view) {
-        A10_Admin_ResetPassword.this.finish();
+        A10_Admin_Delete_User.this.finish();
     }
 
-    public void onResetPassword(View view) {
-        resetPassword();
+    public void onDeleteUser(View view) {
+        onMessageAlertInfo();
     }
 
-    private void resetPassword() {
+    public void deleteUser() {
         try {
-            final String userID = spUserID.getSelectedItem().toString();
+            String userID = spUserID.getSelectedItem().toString();
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference userMaster = database.getReference("CSO").child("TBM_Users").child(userID);
-            userMaster.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.getValue() != null) {
-                        DatabaseReference user = database.getReference("CSO").child("TBM_Users");
-                        user.child(userID).child("passWord").setValue(PASS_DEFAULT);
-                        Toast.makeText(A10_Admin_ResetPassword.this, "Reset password successful", Toast.LENGTH_SHORT).show();
-                        A10_Admin_ResetPassword.this.finish();
-                    } else {
-                        Toast.makeText(A10_Admin_ResetPassword.this, "Wrong UserID, please try again!", Toast.LENGTH_LONG).show();
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-
+            final DatabaseReference reference = database.getReference("CSO").child("TBM_Users");
+            reference.child(userID).removeValue();
+            getDataFireBase();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    //endregion
+
+    //region DELETE USER
+    public void onMessageAlertInfo() {
+        try {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Confirm delete user");
+            builder.setMessage("Are you sure delete this user ???");
+
+            DialogInterface.OnClickListener clickListener = new DialogInterface.OnClickListener() {
+
+                @RequiresApi(api = Build.VERSION_CODES.M)
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    switch (i) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            deleteUser();
+                            break;
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            break;
+                    }
+                }
+            };
+
+            builder.setPositiveButton("OK", clickListener);
+            builder.setNegativeButton("Cancel", clickListener);
+            builder.setIcon(R.drawable.a10_admin_ic_delete_user);
+
+            Dialog dialog = builder.create();
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //endregion
 }

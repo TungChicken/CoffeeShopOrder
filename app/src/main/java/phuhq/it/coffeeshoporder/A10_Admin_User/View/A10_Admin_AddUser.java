@@ -1,10 +1,7 @@
 package phuhq.it.coffeeshoporder.A10_Admin_User.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,6 +10,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,7 +28,7 @@ public class A10_Admin_AddUser extends AppCompatActivity {
     private Spinner spPermission;
     private EditText edUserID, edPass, edFullName, edDate, edPhone, edAddress;
     private RadioButton rdMale, rdFeMale;
-    private String userID;
+    //private String userID;
 
     //region FORM EVENT
     @Override
@@ -105,7 +104,7 @@ public class A10_Admin_AddUser extends AppCompatActivity {
     public A2_Cls_User onGetDataFromView() {
         A2_Cls_User clsUser = new A2_Cls_User();
         try {
-            userID = edUserID.getText().toString();
+            clsUser.setUserID(edUserID.getText().toString());
             clsUser.setPassWord(edPass.getText().toString());
             clsUser.setPermission(spPermission.getSelectedItem().toString());
             clsUser.setFullName(edFullName.getText().toString());
@@ -135,9 +134,16 @@ public class A10_Admin_AddUser extends AppCompatActivity {
     private void addNewUser() {
         try {
             DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-            A2_Cls_User clsInfo = new A2_Cls_User();
-            clsInfo = onGetDataFromView();
-            database.child("CSO").child("TBM_Users").child(userID).setValue(clsInfo);
+            A2_Cls_User clsInfo = onGetDataFromView();
+            if (clsInfo.getUserID().isEmpty()){
+                Toast.makeText(this, "Please input information", Toast.LENGTH_SHORT).show();
+                edUserID.setError("Input data here!");
+            }else {
+                database.child("CSO").child("TBM_Users").child(clsInfo.getUserID()).setValue(clsInfo);
+                A10_Admin_AddUser.this.finish();
+                Toast.makeText(this, "Add new user successful", Toast.LENGTH_SHORT).show();
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -146,8 +152,6 @@ public class A10_Admin_AddUser extends AppCompatActivity {
     public void onCreateUser(View view) {
         try {
             addNewUser();
-            A10_Admin_AddUser.this.finish();
-            Toast.makeText(this, "Add new user successful", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
         }

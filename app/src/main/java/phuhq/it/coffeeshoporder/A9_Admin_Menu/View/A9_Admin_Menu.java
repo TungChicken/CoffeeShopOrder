@@ -1,14 +1,11 @@
 package phuhq.it.coffeeshoporder.A9_Admin_Menu.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import phuhq.it.coffeeshoporder.A10_Admin_User.View.A10_Admin_AddUser;
-import phuhq.it.coffeeshoporder.A10_Admin_User.View.A10_Admin_ResetPassword;
-import phuhq.it.coffeeshoporder.A11_Admin_Drinks.View.A11_Admin_NewDrinks;
+import androidx.appcompat.app.AppCompatActivity;
+
 import phuhq.it.coffeeshoporder.R;
 
 public class A9_Admin_Menu extends AppCompatActivity {
@@ -19,16 +16,17 @@ public class A9_Admin_Menu extends AppCompatActivity {
         setContentView(R.layout.a9_admin_menu);
     }
 
-    public void onNewUser(View view) {
-        Intent intent = new Intent(A9_Admin_Menu.this, A10_Admin_AddUser.class);
+    public void onUserManagement(View view) {
+        Intent intent = new Intent(A9_Admin_Menu.this, A9_Admin_Menu_User.class);
         startActivity(intent);
     }
-    public void onResetUser(View view) {
-        Intent intent = new Intent(A9_Admin_Menu.this, A10_Admin_ResetPassword.class);
+    public void onDrinkManagement(View view) {
+        Intent intent = new Intent(A9_Admin_Menu.this, A9_Admin_Menu_Drink.class);
         startActivity(intent);
     }
-    public void onNewDrink(View view) {
-        Intent intent = new Intent(A9_Admin_Menu.this, A11_Admin_NewDrinks.class);
+    public void onReportManagement(View view) {
+        Intent intent = new Intent(A9_Admin_Menu.this, A9_Admin_Menu_Report.class);
         startActivity(intent);
     }
+
 }

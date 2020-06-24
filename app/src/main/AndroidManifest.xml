@@ -16,6 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".A10_Admin_User.View.A10_Admin_Delete_User"></activity>
+        <activity android:name=".A10_Admin_User.View.A10_Admin_UpdateUser" />
+        <activity android:name=".A9_Admin_Menu.View.A9_Admin_Menu_Report" />
+        <activity android:name=".A9_Admin_Menu.View.A9_Admin_Menu_Drink" />
+        <activity android:name=".A9_Admin_Menu.View.A9_Admin_Menu_User" />
+
         <service
             android:name=".G_Setting.ReceivedMessage"
             android:exported="false">
@@ -24,7 +30,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".A11_Admin_Drinks.View.A11_Admin_NewDrinks"></activity>
+        <activity android:name=".A11_Admin_Drinks.View.A11_Admin_NewDrinks" />
         <activity android:name=".A10_Admin_User.View.A10_Admin_ResetPassword" />
         <activity android:name=".A10_Admin_User.View.A10_Admin_AddUser" />
         <activity android:name=".A9_Admin_Menu.View.A9_Admin_Menu" />

@@ -2,9 +2,12 @@ package phuhq.it.coffeeshoporder.A0_Main.View;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.Notification;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -12,14 +15,14 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.io.File;
 
 import phuhq.it.coffeeshoporder.A3_OrderDetails.View.A3_OrderDialog;
 import phuhq.it.coffeeshoporder.A3_OrderDetails.View.A3_OrderDialogMore;
@@ -100,10 +103,10 @@ public class MainActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.getValue() != null) {
                         String tableName = dataSnapshot.child("TableName").getValue().toString();
-                        //Toast.makeText(MainActivity.this, tableName, Toast.LENGTH_SHORT).show();
-                        //showNotifications(tableName);
+                        playBeep();
                         onMessageAlertInfo(tableName);
                         reference.child("TableName").removeValue();
+
                     }
                 }
 
@@ -143,21 +146,16 @@ public class MainActivity extends AppCompatActivity {
     //endregion
 
     //region LISTENING NOTIFICATIONS
-    public void showNotifications(String message) {
-        try {
-            String title = message + STATUS_FINISH;
-            String body = "Finish for build";
-            Notification notification = new NotificationCompat.Builder(MainActivity.this)
-                    .setContentTitle(title)
-                    .setContentText(body)
-                    .setSmallIcon(R.drawable.ic_check)
-                    .build();
+    public void playBeep() {
+        // Cách 1: Sử dụng audio có sẵn của android
+//        ToneGenerator toneGenerator = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 500);
+//        toneGenerator.startTone(ToneGenerator.TONE_PROP_PROMPT);
 
-            NotificationManagerCompat manager = NotificationManagerCompat.from(getApplicationContext());
-            manager.notify(123, notification);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // Cách 2: Sử dụng audio của mình
+        Uri beepSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + File.pathSeparator
+                + File.separator + getPackageName() + "/raw/notifications.mp3");
+        Ringtone ringtone = RingtoneManager.getRingtone(this, beepSound);
+        ringtone.play();
     }
 
     public void onMessageAlertInfo(String msgKey) {

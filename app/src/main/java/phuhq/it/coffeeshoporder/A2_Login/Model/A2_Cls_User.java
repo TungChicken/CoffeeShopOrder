@@ -3,7 +3,15 @@ package phuhq.it.coffeeshoporder.A2_Login.Model;
 import java.io.Serializable;
 
 public class A2_Cls_User implements Serializable {
-    private String passWord, fullName, permission, address, dateOfBirth, email, gender, phone;
+    private String userID, passWord, fullName, permission, address, dateOfBirth, email, gender, phone;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 
     public String getFullName() {
         return fullName;

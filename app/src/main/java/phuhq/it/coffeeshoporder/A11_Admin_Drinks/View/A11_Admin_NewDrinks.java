@@ -43,17 +43,18 @@ public class A11_Admin_NewDrinks extends AppCompatActivity {
         a3ClsDrinks.setDrinkID(Integer.parseInt(edDrinkID.getText().toString()));
         a3ClsDrinks.setDrinkName(edDrinkName.getText().toString());
         a3ClsDrinks.setPrice(Integer.parseInt(edPrice.getText().toString()));
+        a3ClsDrinks.setImage("http://");
 
         return a3ClsDrinks;
     }
 
     public void mainLoad() {
         getDrinkListCurrent();
-
     }
 
     public void onCreateDrink(View view) {
         try {
+
             addNewDrink();
 
         } catch (Exception e) {
@@ -80,6 +81,8 @@ public class A11_Admin_NewDrinks extends AppCompatActivity {
                             drinkList.add(drink);
                         }
                         setNextDrinkID();
+                    } else {
+                        edDrinkID.setText("1");
                     }
                 }
 
@@ -114,31 +117,40 @@ public class A11_Admin_NewDrinks extends AppCompatActivity {
 
     public void addNewDrink() {
         try {
-            A3_Cls_Drinks a3ClsDrinks = new A3_Cls_Drinks();
-            a3ClsDrinks = getDataFromView();
-            DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-            database.child("CSO").child("TBM_Drink").child(edDrinkID.getText().toString()).setValue(a3ClsDrinks, new DatabaseReference.CompletionListener() {
-                @Override
-                public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                    if (databaseError == null) {
-                        Toast.makeText(A11_Admin_NewDrinks.this, "Add new dirk successful", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(A11_Admin_NewDrinks.this, "Fail to add new dirk!!!", Toast.LENGTH_SHORT).show();
+            A3_Cls_Drinks a3ClsDrinks = getDataFromView();
+
+            if (checkAlreadyDrinkName(a3ClsDrinks.getDrinkName())) {
+                edDrinkName.setError("Drink name already exist");
+                Toast.makeText(A11_Admin_NewDrinks.this, "Drink name already exist", Toast.LENGTH_SHORT).show();
+            } else {
+                DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+                database.child("CSO").child("TBM_Drink").child(edDrinkID.getText().toString()).setValue(a3ClsDrinks, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                        if (databaseError == null) {
+                            Toast.makeText(A11_Admin_NewDrinks.this, "Add new dirk successful", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(A11_Admin_NewDrinks.this, "Fail to add new dirk!!!", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
 
-            A11_Admin_NewDrinks.this.finish();
-
-//            DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-//            for (int i = 1; i <= 5000; i++) {
-//                A3_Cls_Drinks a3_cls_drinks = new A3_Cls_Drinks("Dink Name " + i, null, 1 + i, i, 10 + i);
-//                database.child("CSO").child("TBM_TEST").child(String.valueOf(i)).setValue(a3_cls_drinks);
-//            }
-//            edDrinkID.setText("Finish");
-
+                A11_Admin_NewDrinks.this.finish();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean checkAlreadyDrinkName(String drinkName) {
+        try {
+            for (int i = 0; i < drinkList.size(); i++) {
+                if (drinkName.equals(drinkList.get(i).getDrinkName()))
+                    return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

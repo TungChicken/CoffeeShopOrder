@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".A10_Admin_User.View.A10_Admin_Delete_User"></activity>
+        <activity android:name=".A12_Admin_Report.View.A12_Admin_Report"></activity>
+        <activity android:name=".A11_Admin_Drinks.View.A11_Admin_DeleteDrink" />
+        <activity android:name=".A11_Admin_Drinks.View.A11_Admin_UpdateDrink" />
+        <activity android:name=".A10_Admin_User.View.A10_Admin_Delete_User" />
         <activity android:name=".A10_Admin_User.View.A10_Admin_UpdateUser" />
         <activity android:name=".A9_Admin_Menu.View.A9_Admin_Menu_Report" />
         <activity android:name=".A9_Admin_Menu.View.A9_Admin_Menu_Drink" />

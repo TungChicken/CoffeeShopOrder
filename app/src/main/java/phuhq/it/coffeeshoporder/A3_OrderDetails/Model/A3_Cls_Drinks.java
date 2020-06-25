@@ -3,27 +3,27 @@ package phuhq.it.coffeeshoporder.A3_OrderDetails.Model;
 import java.io.Serializable;
 
 public class A3_Cls_Drinks implements Serializable {
-    private String DrinkName, Image ;
-    private int NowQty, DrinkID;
-    private int Price;
+    private String drinkName, Image ;
+    private int nowQty, drinkID;
+    private int price;
 
     public A3_Cls_Drinks() {
     }
 
     public A3_Cls_Drinks(String drinkName, String image, int nowQty, int drinkID, int price) {
-        DrinkName = drinkName;
+        this.drinkName = drinkName;
         Image = image;
-        NowQty = nowQty;
-        DrinkID = drinkID;
-        Price = price;
+        this.nowQty = nowQty;
+        this.drinkID = drinkID;
+        this.price = price;
     }
 
     public String getDrinkName() {
-        return DrinkName;
+        return drinkName;
     }
 
     public void setDrinkName(String drinkName) {
-        DrinkName = drinkName;
+        this.drinkName = drinkName;
     }
 
     public String getImage() {
@@ -35,26 +35,26 @@ public class A3_Cls_Drinks implements Serializable {
     }
 
     public int getNowQty() {
-        return NowQty;
+        return nowQty;
     }
 
     public void setNowQty(int nowQty) {
-        NowQty = nowQty;
-    }
-
-    public int getPrice() {
-        return Price;
-    }
-
-    public void setPrice(int price) {
-        Price = price;
+        this.nowQty = nowQty;
     }
 
     public int getDrinkID() {
-        return DrinkID;
+        return drinkID;
     }
 
     public void setDrinkID(int drinkID) {
-        DrinkID = drinkID;
+        this.drinkID = drinkID;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

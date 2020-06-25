@@ -1,14 +1,14 @@
 package phuhq.it.coffeeshoporder.A2_Login.View;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.common.util.Strings;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +26,7 @@ import phuhq.it.coffeeshoporder.R;
 
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.PER_ADMIN;
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.PER_CHEF;
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.getTextFromASCIICode;
 
 public class A2_Login_Pass extends AppCompatActivity {
     //region AVAILABLE
@@ -81,7 +82,9 @@ public class A2_Login_Pass extends AppCompatActivity {
                             clsUser = new A2_Cls_User();
                             clsUser = dataSnapshot.getValue(A2_Cls_User.class);
                             assert clsUser != null;
-                            if (clsUser.getPassWord().equals(passWord)) {
+                            String pass = getTextFromASCIICode(clsUser.getPassWord(),2);
+                            assert pass != null;
+                            if (pass.equals(passWord)) {
                                 G_Common.userLogin = userName;
                                 if (clsUser.getPermission().equals(PER_ADMIN)) {
                                     Intent intent = new Intent(A2_Login_Pass.this, A9_Admin_Menu.class);
@@ -91,7 +94,6 @@ public class A2_Login_Pass extends AppCompatActivity {
                                     startActivity(intent);
                                 } else {
                                     Intent intent = new Intent(A2_Login_Pass.this, MainActivity.class);
-                                    //intent.putExtra("USER", clsUser);
                                     startActivity(intent);
                                 }
 

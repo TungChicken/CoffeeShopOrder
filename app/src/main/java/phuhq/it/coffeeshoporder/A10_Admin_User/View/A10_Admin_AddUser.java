@@ -28,6 +28,8 @@ import java.util.List;
 import phuhq.it.coffeeshoporder.A2_Login.Model.A2_Cls_User;
 import phuhq.it.coffeeshoporder.R;
 
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.getASCIICodeFromText;
+
 public class A10_Admin_AddUser extends AppCompatActivity {
     private Spinner spPermission;
     private EditText edUserID, edPass, edFullName, edDate, edPhone, edAddress;
@@ -110,7 +112,8 @@ public class A10_Admin_AddUser extends AppCompatActivity {
         A2_Cls_User clsUser = new A2_Cls_User();
         try {
             clsUser.setUserID(edUserID.getText().toString());
-            clsUser.setPassWord(edPass.getText().toString());
+            String pass = getASCIICodeFromText(edPass.getText().toString(), 2);
+            clsUser.setPassWord(pass);
             clsUser.setPermission(spPermission.getSelectedItem().toString());
             clsUser.setFullName(edFullName.getText().toString());
             clsUser.setDateOfBirth(edDate.getText().toString());

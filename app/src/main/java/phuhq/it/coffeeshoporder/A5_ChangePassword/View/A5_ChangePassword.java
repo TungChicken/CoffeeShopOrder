@@ -1,13 +1,13 @@
 package phuhq.it.coffeeshoporder.A5_ChangePassword.View;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.common.util.Strings;
 import com.google.firebase.database.DataSnapshot;
@@ -81,14 +81,14 @@ public class A5_ChangePassword extends AppCompatActivity {
                             clsUser = new A2_Cls_User();
                             clsUser = dataSnapshot.getValue(A2_Cls_User.class);
                             assert clsUser != null;
-                            if (clsUser.getPassWord().equals(oldPass)) {
+                            String oldPasswordDB = G_Common.getTextFromASCIICode(clsUser.getPassWord(), 2);
+                            if (oldPasswordDB.equals(oldPass)) {
                                 DatabaseReference changePassword = database.getReference("CSO").child("TBM_Users");
-                                changePassword.child(G_Common.userLogin).child("passWord").setValue(newPass);
+                                String newPassMD5 = G_Common.getASCIICodeFromText(newPass, 2);
+                                changePassword.child(G_Common.userLogin).child("passWord").setValue(newPassMD5);
                                 Toast.makeText(A5_ChangePassword.this, "Change password successful!", Toast.LENGTH_LONG).show();
                                 progressBar.setVisibility(View.GONE);
                                 finish();
-//                                Intent intent = new Intent(A5_ChangePassword.this, A2_Login_Pass.class);
-//                                startActivity(intent);
                             } else {
                                 Toast.makeText(A5_ChangePassword.this, "Old password is wrong. Please try again!", Toast.LENGTH_LONG).show();
                                 edOldPass.requestFocus();

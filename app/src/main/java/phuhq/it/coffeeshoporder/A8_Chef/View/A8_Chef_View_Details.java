@@ -58,7 +58,7 @@ public class A8_Chef_View_Details extends AppCompatActivity {
             // Xóa dữ liệu cũ trên lưới
             lvDrink.setAdapter(null);
             // Khởi tạo apdater
-            A8_Chef_Details_Adapter detailsAdapter = new A8_Chef_Details_Adapter(this, R.layout.a8_chef_view_details_item, drinkListOrder.get(0).getDrinksList());
+            A8_Chef_Details_Adapter detailsAdapter = new A8_Chef_Details_Adapter(this, R.layout.a8_chef_view_details_item, drinkListOrder.get(position).getDrinksList());
 
             // Gán giá trị adapter cho listview
             this.lvDrink.setAdapter(detailsAdapter);

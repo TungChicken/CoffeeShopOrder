@@ -6,6 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import phuhq.it.coffeeshoporder.A12_Admin_Report.View.A12_Admin_Report;
 import phuhq.it.coffeeshoporder.R;
 
 public class A9_Admin_Menu extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class A9_Admin_Menu extends AppCompatActivity {
         startActivity(intent);
     }
     public void onReportManagement(View view) {
-        Intent intent = new Intent(A9_Admin_Menu.this, A9_Admin_Menu_Report.class);
+        Intent intent = new Intent(A9_Admin_Menu.this, A12_Admin_Report.class);
         startActivity(intent);
     }
 

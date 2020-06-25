@@ -11,6 +11,7 @@ public class G_Common {
     public static boolean flagTableList = false; //false: order;   true:invoice
     public static String tableOrder;
     public static String tableNameOrder;
+    public static String tableNameInvoice;
     public static final String STATUS_ORDER = "order";
     public static final String STATUS_PENDING = "pending";
     public static final String STATUS_FREE = "free";

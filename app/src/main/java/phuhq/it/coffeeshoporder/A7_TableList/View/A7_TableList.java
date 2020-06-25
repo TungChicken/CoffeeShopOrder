@@ -1,16 +1,14 @@
 package phuhq.it.coffeeshoporder.A7_TableList.View;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,8 +21,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import phuhq.it.coffeeshoporder.A3_OrderDetails.View.A3_OrderDetails;
+import phuhq.it.coffeeshoporder.A4_OrderOverView.View.A4_Invoice;
 import phuhq.it.coffeeshoporder.A7_TableList.Model.A7_Cls_Table;
 import phuhq.it.coffeeshoporder.A7_TableList.Presenter.A7_Adapter;
+import phuhq.it.coffeeshoporder.G_Common.G_Common;
 import phuhq.it.coffeeshoporder.R;
 
 import static phuhq.it.coffeeshoporder.G_Common.G_Common.STATUS_FREE;
@@ -65,7 +65,7 @@ public class A7_TableList extends AppCompatActivity {
         try {
             final FirebaseDatabase database = FirebaseDatabase.getInstance();
             final DatabaseReference tables = database.getReference("CSO").child("TBM_Tables");
-            tables.addListenerForSingleValueEvent(new ValueEventListener() {
+            tables.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.getValue() != null) {
@@ -130,10 +130,16 @@ public class A7_TableList extends AppCompatActivity {
             lvTable.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    tableOrder = tableList.get(position).getId();
-                    tableNameOrder = tableList.get(position).getName();
-                    Intent intent = new Intent(A7_TableList.this, A3_OrderDetails.class);
-                    startActivity(intent);
+                    if (flagTableList) {
+                        G_Common.tableNameInvoice = tableList.get(position).getId();
+                        Intent intent = new Intent(A7_TableList.this, A4_Invoice.class);
+                        startActivity(intent);
+                    } else {
+                        tableOrder = tableList.get(position).getId();
+                        tableNameOrder = tableList.get(position).getName();
+                        Intent intent = new Intent(A7_TableList.this, A3_OrderDetails.class);
+                        startActivity(intent);
+                    }
                 }
             });
         } catch (Exception e) {

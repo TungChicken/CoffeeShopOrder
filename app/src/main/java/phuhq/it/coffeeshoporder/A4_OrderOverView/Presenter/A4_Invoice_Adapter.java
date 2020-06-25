@@ -1,11 +1,10 @@
-package phuhq.it.coffeeshoporder.A8_Chef.Presenter;
+package phuhq.it.coffeeshoporder.A4_OrderOverView.Presenter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -13,12 +12,15 @@ import java.util.List;
 import phuhq.it.coffeeshoporder.A8_Chef.Model.A8_Cls_Chef_Details;
 import phuhq.it.coffeeshoporder.R;
 
-public class A8_Chef_Details_Adapter extends BaseAdapter {
+import static phuhq.it.coffeeshoporder.G_Common.G_Common.getDecimalFormattedString;
+
+public class A4_Invoice_Adapter extends BaseAdapter {
+
     private Context context;
     private int layout;
     private List<A8_Cls_Chef_Details> drinkList;
 
-    public A8_Chef_Details_Adapter(Context context, int layout, List<A8_Cls_Chef_Details> drinkList) {
+    public A4_Invoice_Adapter(Context context, int layout, List<A8_Cls_Chef_Details> drinkList) {
         this.context = context;
         this.layout = layout;
         this.drinkList = drinkList;
@@ -40,15 +42,14 @@ public class A8_Chef_Details_Adapter extends BaseAdapter {
     }
 
     public static class ViewHolders {
-        private TextView tvQty, tvTitle;
-        private ImageView imgDrink;
+        private TextView tvQty, tvTitle, tvTotal;
     }
 
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
 
         try {
-            A8_Chef_Details_Adapter.ViewHolders viewHolders = null;
+            A4_Invoice_Adapter.ViewHolders viewHolders = null;
             if (view == null) {
                 // Khai báo màn hình
                 LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -56,21 +57,23 @@ public class A8_Chef_Details_Adapter extends BaseAdapter {
                 view = layoutInflater.inflate(layout, null);
 
                 // Ánh xạ đối tượng
-                viewHolders = new A8_Chef_Details_Adapter.ViewHolders();
+                viewHolders = new A4_Invoice_Adapter.ViewHolders();
                 viewHolders.tvQty = view.findViewById(R.id.a8_item_tvQtyOrder);
                 viewHolders.tvTitle = view.findViewById(R.id.a8_item_tvTitle);
-                viewHolders.imgDrink = view.findViewById(R.id.a8_item_img);
+                viewHolders.tvTotal = view.findViewById(R.id.a8_item_tvQtyOrder_total);
 
                 view.setTag(viewHolders);
                 view.setTag(R.id.a8_item_tvQtyOrder, viewHolders.tvQty);
                 view.setTag(R.id.a8_item_tvTitle, viewHolders.tvTitle);
-                view.setTag(R.id.a8_item_img, viewHolders.imgDrink);
+                view.setTag(R.id.a8_item_tvQtyOrder_total, viewHolders.tvTotal);
             } else {
-                viewHolders = (A8_Chef_Details_Adapter.ViewHolders) view.getTag();
+                viewHolders = (A4_Invoice_Adapter.ViewHolders) view.getTag();
             }
             // Hiển thị thông tin
             viewHolders.tvTitle.setText(String.valueOf(drinkList.get(position).getDrinkName()));
             viewHolders.tvQty.setText(String.valueOf(drinkList.get(position).getNowQty()));
+            int totalRow = drinkList.get(position).getNowQty() * drinkList.get(position).getPrice();
+            viewHolders.tvTotal.setText(getDecimalFormattedString(String.valueOf(totalRow)));
 
             return view;
         } catch (Exception e) {

@@ -69,6 +69,7 @@ public class A2_Login_Pass extends AppCompatActivity {
                 edPass.requestFocus();
                 progressBar.setVisibility(View.GONE);
                 return;
+
             }
 
             // Check vaild user registered
